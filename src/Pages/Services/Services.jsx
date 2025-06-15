@@ -6,25 +6,25 @@ const Services = () => {
   const servicesData = [
     {
       id: 1,
-      title: "Work Management",
+      title: "Startup Consultancy",
       description:
-        "Manage and organize your projects effectively with real-time updates and smart tools.",
+        "From business planning to legal entity registration, we help lay a solid foundation for your venture.",
       image:
         "https://castro.jamstacktemplates.dev/assets/img/service/service-details-4.jpg",
       icon: <RiBuildingLine />,
     },
     {
       id: 2,
-      title: "Home Renovation",
+      title: "IT Infrastructure & Support",
       description:
-        "Professional home improvement services with quality craftsmanship and timely delivery.",
+        "We manage all your startup's logistical needs including warehousing, last-mile delivery, and fleet solutions.",
       image:
         "https://castro.jamstacktemplates.dev/assets/img/service/service-details-3.jpg",
       icon: <RiBuildingLine />,
     },
     {
       id: 3,
-      title: "Plumbing Solutions",
+      title: "Transportation & Logistics",
       description:
         "Expert plumbing services for homes and businesses, available 24/7.",
       image:
@@ -33,7 +33,7 @@ const Services = () => {
     },
     {
       id: 4,
-      title: "Electrical Repair",
+      title: "Government Tender Assistance",
       description:
         "Certified electricians offering reliable and safe repair services.",
       image:

@@ -62,7 +62,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
-                {["Shipping & Returns", "Privacy Policy", "Terms of Service"].map((item) => (
+                {["Privacy Policy", "Terms of Service"].map((item) => (
                   <li key={item}>
                     <a href="#" className="hover:text-red-500 transition">{item}</a>
                   </li>
@@ -75,7 +75,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="text-center border-t border-gray-700 py-4 text-sm text-gray-400">
-        © Safe Solution International 2025 - 2030. All rights reserved.
+        <span>© {new Date().getFullYear()} Safe Solution International. All rights reserved.</span>
       </div>
     </footer>
   );

@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { FaHome } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa6";
+// import { FaHome } from "react-icons/fa";
+// import { FaPhone } from "react-icons/fa6";
 import { RiAlignRight, RiCloseFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const navItems = [
     { name: "HOME", path: "/" },
-    { name: "ABOUT", path: "/about" },
     { name: "SERVICE", path: "/service" },
     { name: "PROJECT", path: "/projects" },
     { name: "BLOG", path: "/blog" },
+    { name: "ABOUT", path: "/about" },
     { name: "CONTACT", path: "/contact" },
   ];
 
@@ -44,21 +44,21 @@ export default function Navbar() {
           />
           <div>
             <h1 className="text-lg font-semibold">
-              Safe solution International
+              Safe Solution International
             </h1>
-            <p className="text-sm text-gray-500">Build Your Dreams</p>
+            <p className="text-sm text-gray-500">Start Stong, Start Right</p>
           </div>
         </div>
 
         {/* Contact Info */}
-        <div className="flex space-x-8">
+        {/* <div className="flex space-x-8">
           <div className="flex items-center space-x-2">
             <div className="border border-red-500 rounded-full p-2">
               <FaPhone className="text-red-500" />
             </div>
             <div>
               <p className="text-sm font-semibold">Phone</p>
-              <p className="text-gray-600">98 9875 5968 54</p>
+              <p className="text-gray-600">+880 1713-275781</p>
             </div>
           </div>
 
@@ -71,7 +71,7 @@ export default function Navbar() {
               <p className="text-gray-600">your address goes here</p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Mobile Header */}

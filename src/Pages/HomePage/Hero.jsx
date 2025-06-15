@@ -5,28 +5,30 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://img.freepik.com/premium-vector/blue-skyline-with-modern-construction-site-silhouettes-building-with-scaffolds_88272-8833.jpg?semt=ais_hybrid&w=740')",
+          // a better background image to use for free keep the copmpany description(We are your one-stop solution for establishing and growing your business. From transportation and IT support to government tenders, we provide end-to-end services to help startups and companies succeed.) in mind
+          backgroundImage: "url('/images/BG.jpg')",
         }}
       ></div>
 
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      {/* Subtle Black Overlay */}
+      <div className="absolute inset-0 bg-black/60"></div>
 
       {/* Content */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-5 items-center p-8 max-w-7xl mx-auto">
-        <div className="flex flex-col items-center justify-center text-center lg:items-start lg:justify-start lg:text-left">
-          <h1 className="text-4xl md:text-5xl font-bold">Safe Solution International</h1>
-          <p className="text-lg md:text-xl my-6 md:my-10">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quos,
-            voluptatem rerum, tenetur iusto magni quia doloribus dicta atque facere
-            pariatur consequatur itaque? Praesentium itaque neque nulla provident at,
-            voluptatibus.
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center p-8 max-w-7xl mx-auto">
+        <div className="flex flex-col items-center justify-center text-center lg:items-start lg:text-left">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+            Safe Solution International
+          </h1>
+          <p className="text-lg md:text-xl mb-8 max-w-2xl text-gray-100 font-medium">
+            We are your one-stop solution for establishing and growing your business. From transportation and IT support to government tenders, we provide end-to-end services to help startups and companies succeed.
           </p>
           <div className="flex gap-4 flex-wrap justify-center lg:justify-start">
-            <button className="px-10 py-2 border bg-red-500/50 border-red-500  rounded hover:bg-red-500 text-white transform duration-500 hover:scale-105">
-              See Detail
-            </button>
+            <a
+              href="/about"
+              className="px-8 py-2 border border-red-600 bg-transparent rounded shadow-sm hover:bg-red-600 hover:text-white transition-colors duration-300 font-semibold"
+            >
+              Learn More
+            </a>
           </div>
         </div>
         {/* <div className="p-5">Optional Right Side Content</div> */}
