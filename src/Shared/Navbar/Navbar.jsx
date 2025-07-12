@@ -76,10 +76,16 @@ export default function Navbar() {
 
       {/* Mobile Header */}
       <div className="flex justify-between items-center px-4 py-3 md:hidden">
-        <img src="https://images.seeklogo.com/logo-png/48/2/scuba-scholl-international-logo-png_seeklogo-483233.png" alt="Logo" className="w-10 h-10" />
+        <div className="flex items-center gap-3">
+          <img src="https://images.seeklogo.com/logo-png/48/2/scuba-scholl-international-logo-png_seeklogo-483233.png" alt="Logo" className="w-8 h-8 xs:w-10 xs:h-10" />
+          <div className="hidden xs:block">
+            <h1 className="text-sm font-semibold text-gray-900 leading-tight">Safe Solution</h1>
+            <p className="text-xs text-gray-500">International</p>
+          </div>
+        </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-2xl text-red-500 focus:outline-none"
+          className="text-2xl text-red-500 focus:outline-none p-2 hover:bg-red-50 rounded-lg transition-colors"
         >
           {menuOpen ? <RiCloseFill /> : <RiAlignRight />}
         </button>
@@ -109,14 +115,14 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full">
-          <div className="flex flex-col items-start px-6 py-4 space-y-3">
+        <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full border-t border-gray-100 z-50">
+          <div className="flex flex-col px-4 py-4 space-y-1">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
                 onClick={handleLinkClick}
-                className="text-gray-800 font-semibold text-center text-sm hover:text-red-500 border-b border-gray-100 w-full"
+                className="text-gray-800 font-semibold text-sm hover:text-red-500 hover:bg-red-50 px-4 py-3 rounded-lg transition-all duration-200 border-b border-gray-50 last:border-b-0"
               >
                 {item.name}
               </Link>

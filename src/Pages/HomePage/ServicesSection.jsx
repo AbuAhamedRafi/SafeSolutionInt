@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaArrowRight, FaStar } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -179,11 +179,6 @@ export default function ServicesSection() {
                 
                 {/* Card Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
-                
-                {/* Service Number Badge */}
-                <div className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold">
-                  {i + 1}
-                </div>
 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Image Container */}
@@ -194,11 +189,6 @@ export default function ServicesSection() {
                       className="rounded-2xl h-48 w-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    
-                    {/* Overlay Icon */}
-                    <div className="absolute top-4 left-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110">
-                      <FaCheckCircle className="text-green-500 text-xl" />
-                    </div>
                   </div>
 
                   {/* Content */}
@@ -229,19 +219,6 @@ export default function ServicesSection() {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* Bottom CTA Section */}
-        <div className="text-center mt-16 p-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-3xl text-white">
-          <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-            Ready to Transform Your Business?
-          </h3>
-          <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
-            Let&apos;s discuss how our comprehensive services can accelerate your growth and success.
-          </p>
-          <button className="bg-white text-red-500 px-8 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
-            Get Free Consultation
-          </button>
-        </div>
       </div>
     </section>
   );

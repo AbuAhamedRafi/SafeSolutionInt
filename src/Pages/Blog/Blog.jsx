@@ -198,19 +198,19 @@ const Blog = () => {
               Featured Articles
             </h2>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
             {featuredBlogs.slice(0, 2).map((blog) => (
               <div
                 key={blog.id}
-                className="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
+                className="group relative bg-white rounded-2xl md:rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
               >
                 {/* Featured Badge */}
-                <div className="absolute top-6 left-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
+                <div className="absolute top-4 md:top-6 left-4 md:left-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-2 md:px-3 py-1 rounded-full text-xs font-semibold z-10">
                   Featured
                 </div>
                 
                 {/* Category Badge */}
-                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm text-gray-600 px-3 py-1 rounded-full text-xs font-semibold z-10">
+                <div className="absolute top-4 md:top-6 right-4 md:right-6 bg-white/90 backdrop-blur-sm text-gray-600 px-2 md:px-3 py-1 rounded-full text-xs font-semibold z-10">
                   {blog.category}
                 </div>
 
@@ -241,16 +241,17 @@ const Blog = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-8 space-y-4">
+                  <div className="p-6 md:p-8 space-y-3 md:space-y-4">
                     {/* Meta Information */}
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm text-gray-500">
                       <div className="flex items-center gap-1">
                         <FaCalendarAlt className="text-xs" />
-                        <span>{blog.date}</span>
+                        <span className="hidden xs:inline">{blog.date}</span>
+                        <span className="xs:hidden">{blog.date.split(',')[0]}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <FaUser className="text-xs" />
-                        <span>{blog.author}</span>
+                        <span className="truncate max-w-24 xs:max-w-none">{blog.author}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <FaClock className="text-xs" />
@@ -258,11 +259,11 @@ const Blog = () => {
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors duration-300 leading-tight">
+                    <h3 className="text-lg md:text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors duration-300 leading-tight line-clamp-2">
                       {blog.blog}
                     </h3>
                     
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed text-sm md:text-base line-clamp-3">
                       {blog.description}
                     </p>
 

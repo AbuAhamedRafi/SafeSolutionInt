@@ -9,7 +9,7 @@ import {
   RiPlaneLine 
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaStar, FaCheckCircle, FaAward } from "react-icons/fa";
+import { FaArrowRight, FaStar, FaCheckCircle} from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
 
 const Services = () => {
@@ -130,49 +130,49 @@ const Services = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
             {servicesData.map((service, index) => (
               <div
                 key={service.id}
-                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
+                className="group relative bg-white rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
               >
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
                 
                 {/* Service Number Badge */}
-                <div className="absolute top-6 right-6 w-10 h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-white text-sm font-bold z-10">
+                <div className="absolute top-4 md:top-6 right-4 md:right-6 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-bold z-10">
                   {index + 1}
                 </div>
 
                 {/* Category Badge */}
-                <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm text-gray-600 px-3 py-1 rounded-full text-xs font-semibold z-10">
+                <div className="absolute top-4 md:top-6 left-4 md:left-6 bg-white/90 backdrop-blur-sm text-gray-600 px-2 md:px-3 py-1 rounded-full text-xs font-semibold z-10">
                   {service.category}
                 </div>
 
-                <div className="relative z-10 p-8">
+                <div className="relative z-10 p-6 md:p-8">
                   {/* Image Container */}
-                  <div className="relative overflow-hidden rounded-2xl mb-6 group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                  <div className="relative overflow-hidden rounded-xl md:rounded-2xl mb-4 md:mb-6 group-hover:transform group-hover:scale-105 transition-transform duration-300">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-48 object-cover rounded-2xl"
+                      className="w-full h-40 md:h-48 object-cover rounded-xl md:rounded-2xl"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
 
                   {/* Icon */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 group-hover:border-red-300 group-hover:bg-gradient-to-br group-hover:from-red-50 group-hover:to-orange-50 text-gray-700 group-hover:text-red-600 flex items-center justify-center text-2xl rounded-2xl transition-all duration-300 mb-6 group-hover:scale-110">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 group-hover:border-red-300 group-hover:bg-gradient-to-br group-hover:from-red-50 group-hover:to-orange-50 text-gray-700 group-hover:text-red-600 flex items-center justify-center text-xl md:text-2xl rounded-xl md:rounded-2xl transition-all duration-300 mb-4 md:mb-6 group-hover:scale-110">
                     {service.icon}
                   </div>
 
                   {/* Content */}
-                  <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-gray-800 group-hover:text-red-600 transition-colors duration-300">
+                  <div className="space-y-3 md:space-y-4">
+                    <h3 className="text-lg md:text-2xl font-bold text-gray-800 group-hover:text-red-600 transition-colors duration-300 leading-tight">
                       {service.title}
                     </h3>
                     
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-gray-600 leading-relaxed text-sm md:text-base">
                       {service.description}
                     </p>
 
@@ -203,30 +203,6 @@ const Services = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Bottom CTA Section */}
-          <div className="mt-20 text-center p-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-3xl text-white">
-            <div className="max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                <FaAward className="text-sm" />
-                Ready to Get Started?
-              </div>
-              <h3 className="text-3xl sm:text-4xl font-bold mb-4">
-                Transform Your Business Today
-              </h3>
-              <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-                Let&apos;s discuss how our comprehensive services can accelerate your growth and help you achieve your business goals.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-red-500 px-8 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
-                  Get Free Consultation
-                </button>
-                <button className="border-2 border-white/30 text-white px-8 py-3 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300">
-                  View Portfolio
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -182,34 +182,34 @@ const Projects = () => {
           </div>
 
           {/* Stats Section */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-red-500 mb-2">50+</div>
-                <div className="text-gray-600 font-medium">Projects Completed</div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 md:mb-16">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              <div className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-lg border border-gray-100">
+                <div className="text-2xl md:text-3xl font-bold text-red-500 mb-1 md:mb-2">50+</div>
+                <div className="text-gray-600 font-medium text-xs md:text-sm">Projects Completed</div>
               </div>
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-blue-500 mb-2">100%</div>
-                <div className="text-gray-600 font-medium">Client Satisfaction</div>
+              <div className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-lg border border-gray-100">
+                <div className="text-2xl md:text-3xl font-bold text-blue-500 mb-1 md:mb-2">100%</div>
+                <div className="text-gray-600 font-medium text-xs md:text-sm">Client Satisfaction</div>
               </div>
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-green-500 mb-2">25+</div>
-                <div className="text-gray-600 font-medium">Industry Awards</div>
+              <div className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-lg border border-gray-100">
+                <div className="text-2xl md:text-3xl font-bold text-green-500 mb-1 md:mb-2">25+</div>
+                <div className="text-gray-600 font-medium text-xs md:text-sm">Industry Awards</div>
               </div>
-              <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg border border-gray-100">
-                <div className="text-3xl font-bold text-purple-500 mb-2">5+</div>
-                <div className="text-gray-600 font-medium">Years Experience</div>
+              <div className="text-center p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl shadow-lg border border-gray-100">
+                <div className="text-2xl md:text-3xl font-bold text-purple-500 mb-1 md:mb-2">5+</div>
+                <div className="text-gray-600 font-medium text-xs md:text-sm">Years Experience</div>
               </div>
             </div>
           </div>
 
           {/* Projects Grid */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
               {projectsData.map((project) => (
                 <div
                   key={project.id}
-                  className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
+                  className="group relative bg-white rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
                 >
                   {/* Background Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>

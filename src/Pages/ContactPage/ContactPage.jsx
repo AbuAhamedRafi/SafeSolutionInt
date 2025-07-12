@@ -74,7 +74,7 @@ const ContactPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Contact Info Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-16">
           {[
             {
               icon: FaPhone,
@@ -98,29 +98,29 @@ const ContactPage = () => {
               color: "from-red-500 to-pink-600"
             }
           ].map((contact, index) => (
-            <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 text-center">
-              <div className={`w-16 h-16 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <contact.icon className="text-2xl text-white" />
+            <div key={index} className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 text-center">
+              <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <contact.icon className="text-xl md:text-2xl text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{contact.title}</h3>
-              <p className="text-lg font-semibold text-gray-700 mb-1">{contact.info}</p>
-              <p className="text-gray-500">{contact.description}</p>
+              <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-2">{contact.title}</h3>
+              <p className="text-base md:text-lg font-semibold text-gray-700 mb-1 break-words">{contact.info}</p>
+              <p className="text-sm md:text-base text-gray-500">{contact.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Send us a Message</h2>
-              <p className="text-gray-600">
+          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100">
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Send us a Message</h2>
+              <p className="text-gray-600 text-sm md:text-base">
                 Fill out the form below and we&apos;ll get back to you within 24 hours.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 {[
                   { name: "name", label: "Full Name *", type: "text" },
                   { name: "email", label: "Email Address *", type: "email" },
@@ -135,7 +135,7 @@ const ContactPage = () => {
                       value={formData[field.name]}
                       onChange={handleChange}
                       placeholder=" "
-                      className={`peer w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-colors focus:outline-none ${
+                      className={`peer w-full px-3 md:px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-colors focus:outline-none text-sm md:text-base ${
                         errors[field.name] 
                           ? "border-red-500 focus:border-red-500" 
                           : "border-gray-200 focus:border-blue-500"
@@ -143,12 +143,12 @@ const ContactPage = () => {
                     />
                     <label
                       htmlFor={field.name}
-                      className="absolute left-4 top-3 text-gray-500 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-xs"
+                      className="absolute left-3 md:left-4 top-3 text-gray-500 transition-all text-sm md:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-xs"
                     >
                       {field.label}
                     </label>
                     {errors[field.name] && (
-                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                      <p className="text-red-500 text-xs md:text-sm mt-1 flex items-center gap-1">
                         {errors[field.name]}
                       </p>
                     )}
