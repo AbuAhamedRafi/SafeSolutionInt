@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-// import { FaHome } from "react-icons/fa";
-// import { FaPhone } from "react-icons/fa6";
+import { FaHome } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa6";
 import { RiAlignRight, RiCloseFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
@@ -51,7 +51,7 @@ export default function Navbar() {
         </div>
 
         {/* Contact Info */}
-        {/* <div className="flex space-x-8">
+        <div className="flex space-x-8">
           <div className="flex items-center space-x-2">
             <div className="border border-red-500 rounded-full p-2">
               <FaPhone className="text-red-500" />
@@ -68,10 +68,10 @@ export default function Navbar() {
             </div>
             <div>
               <p className="text-sm font-semibold">Address</p>
-              <p className="text-gray-600">your address goes here</p>
+              <p className="text-gray-600">Flat:6/D, MIS Hawlader Mansion, 613 East Kazipara</p>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
 
       {/* Mobile Header */}

@@ -1,138 +1,427 @@
 import { Link } from "react-router-dom";
+import { 
+  FaArrowRight, 
+  FaCalendarAlt, 
+  FaUser, 
+  FaEye, 
+  FaHeart, 
+  FaShare,
+  FaClock,
+  FaStar,
+  FaComments,
+  FaTrophy,
+  FaAward
+} from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
 
 const Blog = () => {
   const blogData = [
     {
       id: 1,
-      blog: "Smart Work Management: Tools and Techniques for Modern Projects",
-      date: "January 4, 2025",
+      blog: "Digital Transformation: The Future of Business Operations",
+      date: "December 15, 2024",
+      author: "Sarah Johnson",
+      readTime: "5 min read",
+      category: "Technology",
       description:
-        "Manage and organize your projects effectively with real-time updates and smart tools.",
+        "Explore how digital transformation is revolutionizing modern business operations and discover the key strategies for successful implementation.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-4.jpg",
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=60",
+      tags: ["Digital", "Business", "Technology"],
+      views: "1.2k",
+      comments: 24,
+      featured: true
     },
     {
       id: 2,
-      blog: "Home Renovation Tips: How to Upgrade Your Space with Style",
-      date: "January 4, 2025",
+      blog: "Building Sustainable Business Models in 2025",
+      date: "December 10, 2024",
+      author: "Michael Chen",
+      readTime: "7 min read",
+      category: "Sustainability",
       description:
-        "Professional home improvement services with quality craftsmanship and timely delivery.",
+        "Learn how successful companies are integrating sustainability into their core business models and creating long-term value.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-3.jpg",
+        "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=60",
+      tags: ["Sustainability", "Business Model", "Future"],
+      views: "890",
+      comments: 18,
+      featured: false
     },
     {
       id: 3,
-      blog: "Plumbing Problems Solved: Expert Solutions for Every Home",
-      date: "January 4, 2025",
+      blog: "The Complete Guide to Government Tender Success",
+      date: "December 5, 2024",
+      author: "David Rodriguez",
+      readTime: "10 min read",
+      category: "Government",
       description:
-        "Expert plumbing services for homes and businesses, available 24/7.",
+        "A comprehensive guide to navigating government tenders, from documentation to submission strategies that win contracts.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-2.jpg",
+        "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=60",
+      tags: ["Government", "Tenders", "Business"],
+      views: "2.1k",
+      comments: 42,
+      featured: true
     },
     {
       id: 4,
-      blog: "Electrical Repair Made Easy: Safe and Reliable Services",
-      date: "January 4, 2025",
+      blog: "Cybersecurity Best Practices for Growing Businesses",
+      date: "November 28, 2024",
+      author: "Emily Zhang",
+      readTime: "6 min read",
+      category: "Security",
       description:
-        "Certified electricians offering reliable and safe repair services.",
+        "Essential cybersecurity strategies every growing business needs to implement to protect their digital assets and customer data.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-1.jpg",
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=60",
+      tags: ["Cybersecurity", "Business", "Protection"],
+      views: "1.5k",
+      comments: 31,
+      featured: false
     },
     {
       id: 5,
-      blog: "Say Goodbye to Pests: Long-Term, Eco-Friendly Pest Control",
-      date: "January 4, 2025",
+      blog: "Effective HR Strategies for Startup Success",
+      date: "November 20, 2024",
+      author: "Rachel Thompson",
+      readTime: "8 min read",
+      category: "Human Resources",
       description:
-        "Eco-friendly pest removal with guaranteed long-term protection.",
+        "Discover proven HR strategies that help startups attract, retain, and develop top talent while building a strong company culture.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-5.jpg",
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=60",
+      tags: ["HR", "Startup", "Talent"],
+      views: "967",
+      comments: 15,
+      featured: false
     },
     {
       id: 6,
-      blog: "Deep Cleaning Done Right: Sparkling Homes and Offices",
-      date: "January 4, 2025",
+      blog: "Brand Identity: Creating a Memorable Business Presence",
+      date: "November 15, 2024",
+      author: "Alex Morgan",
+      readTime: "9 min read",
+      category: "Branding",
       description:
-        "Professional cleaning for residential and commercial spaces.",
+        "Master the art of brand identity creation with expert tips on logo design, color psychology, and consistent brand messaging.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-6.jpg",
+        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=800&q=60",
+      tags: ["Branding", "Design", "Marketing"],
+      views: "1.8k",
+      comments: 28,
+      featured: true
     },
     {
       id: 7,
-      blog: "Transform Your Garden: Landscaping Ideas That Impress",
-      date: "January 4, 2025",
+      blog: "Event Management Excellence: From Planning to Execution",
+      date: "November 8, 2024",
+      author: "Jennifer Lee",
+      readTime: "11 min read",
+      category: "Events",
       description:
-        "Transform your outdoor space with our expert landscaping team.",
+        "Learn the secrets of successful event management, from initial planning stages to flawless execution and post-event analysis.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-1.jpg",
+        "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=60",
+      tags: ["Events", "Management", "Planning"],
+      views: "743",
+      comments: 12,
+      featured: false
     },
     {
       id: 8,
-      blog: "Complete Guide to Home Security: From CCTV to Smart Systems",
-      date: "January 4, 2025",
+      blog: "Smart Travel Management for Business Growth",
+      date: "November 3, 2024",
+      author: "Carlos Santos",
+      readTime: "6 min read",
+      category: "Travel",
       description:
-        "Install CCTV, alarms, and security systems with professional support.",
+        "Optimize your business travel with cost-effective strategies, booking tips, and travel management solutions for modern companies.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-2.jpg",
+        "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=60",
+      tags: ["Travel", "Business", "Efficiency"],
+      views: "654",
+      comments: 9,
+      featured: false
     },
     {
       id: 9,
-      blog: "Painting Like a Pro: Color Ideas and Interior Inspiration",
-      date: "January 4, 2025",
+      blog: "AI and Machine Learning in Business Analytics",
+      date: "October 28, 2024",
+      author: "Dr. Priya Patel",
+      readTime: "12 min read",
+      category: "Technology",
       description:
-        "Interior and exterior painting by skilled professionals using top-grade materials.",
+        "Explore how AI and machine learning are transforming business analytics and providing unprecedented insights for data-driven decisions.",
       image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-3.jpg",
-    },
-    {
-      id: 10,
-      blog: "Fix It Fast: Reliable Appliance Repair Services You Can Trust",
-      date: "January 4, 2025",
-      description:
-        "Affordable repair for your electronics and household appliances.",
-      image:
-        "https://castro.jamstacktemplates.dev/assets/img/service/service-details-4.jpg",
-    },
+        "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=60",
+      tags: ["AI", "Analytics", "Machine Learning"],
+      views: "2.3k",
+      comments: 56,
+      featured: true
+    }
   ];
 
-  return (
-    <div className="">
-      <SectionTitle title="Blog" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-4 max-w-7xl mx-auto">
-        {blogData.map((blog) => (
-          <div
-            key={blog.id}
-            className="group overflow-hidden rounded-lg bg-white shadow hover:shadow-lg transition-all duration-300"
-          >
-            {/* Image with overlay */}
-            <div className="relative">
-              <img
-                src={blog.image}
-                alt={blog.blog}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 group-hover:bg-black/20 transition duration-500 group-hover:scale-105"></div>
-            </div>
+  const featuredBlogs = blogData.filter(blog => blog.featured);
 
-            {/* Text */}
-            <div className="p-5 space-y-3 bg-white">
-              <p className="text-gray-500 font-semibold text-sm">{blog.date}</p>
-              <Link
-                to="/blog_details"
-                className="text-xl sm:text-2xl font-bold text-gray-800 hover:text-red-500 transition-colors"
+  return (
+    <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-20 blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-green-100 to-yellow-100 rounded-full opacity-10 blur-3xl"></div>
+      </div>
+
+      <div className="relative">
+        {/* Enhanced Section Title */}
+        <div className="pt-16 pb-8">
+          <SectionTitle title="Our Blog" />
+        </div>
+
+        {/* Header Section */}
+        <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
+          <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <FaTrophy className="text-sm" />
+            Industry Insights & Expert Knowledge
+          </div>
+          <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
+            Stay informed with the latest trends, insights, and expert advice to help your business thrive in today&apos;s competitive landscape.
+          </p>
+        </div>
+
+        {/* Featured Articles */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <FaStar className="text-yellow-500" />
+              Featured Articles
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {featuredBlogs.slice(0, 2).map((blog) => (
+              <div
+                key={blog.id}
+                className="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
               >
-                {blog.blog}
-              </Link>
-              <p className="text-gray-600">{blog.description}</p>
-              <Link
-                to="/blog_details"
-                className="font-semibold text-red-700 uppercase text-sm hover:underline"
+                {/* Featured Badge */}
+                <div className="absolute top-6 left-6 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
+                  Featured
+                </div>
+                
+                {/* Category Badge */}
+                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm text-gray-600 px-3 py-1 rounded-full text-xs font-semibold z-10">
+                  {blog.category}
+                </div>
+
+                <div className="relative">
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden h-64 group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                    <img
+                      src={blog.image}
+                      alt={blog.blog}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {/* Hover Actions */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="flex items-center gap-4">
+                        <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+                          <FaEye />
+                        </button>
+                        <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+                          <FaHeart />
+                        </button>
+                        <button className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+                          <FaShare />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8 space-y-4">
+                    {/* Meta Information */}
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <div className="flex items-center gap-1">
+                        <FaCalendarAlt className="text-xs" />
+                        <span>{blog.date}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaUser className="text-xs" />
+                        <span>{blog.author}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaClock className="text-xs" />
+                        <span>{blog.readTime}</span>
+                      </div>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-800 group-hover:text-red-600 transition-colors duration-300 leading-tight">
+                      {blog.blog}
+                    </h3>
+                    
+                    <p className="text-gray-600 leading-relaxed">
+                      {blog.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {blog.tags.map((tag, i) => (
+                        <span key={i} className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Stats and Read More */}
+                    <div className="flex items-center justify-between pt-4">
+                      <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <div className="flex items-center gap-1">
+                          <FaEye className="text-xs" />
+                          <span>{blog.views}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <FaComments className="text-xs" />
+                          <span>{blog.comments}</span>
+                        </div>
+                      </div>
+                      
+                      <Link 
+                        to={`/blog_details/${blog.id}`}
+                        className="group/btn inline-flex items-center gap-2 text-red-500 hover:text-red-600 font-semibold text-sm transition-colors duration-300"
+                      >
+                        Read More
+                        <FaArrowRight className="group-hover/btn:translate-x-1 transition-transform text-xs" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* All Articles Grid */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">All Articles</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogData.map((blog) => (
+              <div
+                key={blog.id}
+                className="group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
               >
-                See More
-              </Link>
+                {/* Background Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+                
+                {blog.featured && (
+                  <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-2 py-1 rounded-full text-xs font-semibold z-10">
+                    Featured
+                  </div>
+                )}
+                
+                {/* Category Badge */}
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-gray-600 px-2 py-1 rounded-full text-xs font-semibold z-10">
+                  {blog.category}
+                </div>
+
+                <div className="relative z-10">
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden h-48 group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                    <img
+                      src={blog.image}
+                      alt={blog.blog}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 space-y-3">
+                    {/* Meta Information */}
+                    <div className="flex items-center gap-3 text-xs text-gray-500">
+                      <div className="flex items-center gap-1">
+                        <FaCalendarAlt className="text-xs" />
+                        <span>{blog.date}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaClock className="text-xs" />
+                        <span>{blog.readTime}</span>
+                      </div>
+                    </div>
+
+                    <h3 className="text-lg font-bold text-gray-800 group-hover:text-red-600 transition-colors duration-300 leading-tight line-clamp-2">
+                      {blog.blog}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                      {blog.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1">
+                      {blog.tags.slice(0, 2).map((tag, i) => (
+                        <span key={i} className="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Stats and Read More */}
+                    <div className="flex items-center justify-between pt-3">
+                      <div className="flex items-center gap-3 text-xs text-gray-500">
+                        <div className="flex items-center gap-1">
+                          <FaEye className="text-xs" />
+                          <span>{blog.views}</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                          <FaComments className="text-xs" />
+                          <span>{blog.comments}</span>
+                        </div>
+                      </div>
+                      
+                      <Link 
+                        to={`/blog_details/${blog.id}`}
+                        className="group/btn inline-flex items-center gap-2 text-red-500 hover:text-red-600 font-semibold text-xs transition-colors duration-300"
+                      >
+                        Read More
+                        <FaArrowRight className="group-hover/btn:translate-x-1 transition-transform text-xs" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA Section */}
+          <div className="mt-20 text-center p-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-3xl text-white">
+            <div className="max-w-4xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <FaAward className="text-sm" />
+                Stay Updated
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-4">
+                Never Miss Our Latest Insights
+              </h3>
+              <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
+                Subscribe to our newsletter and get the latest business insights, tips, and strategies delivered directly to your inbox.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="bg-white text-red-500 px-8 py-3 rounded-2xl font-semibold hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
+                  Subscribe Newsletter
+                </button>
+                <button className="border-2 border-white/30 text-white px-8 py-3 rounded-2xl font-semibold hover:bg-white/10 transition-all duration-300">
+                  Contact Us
+                </button>
+              </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
