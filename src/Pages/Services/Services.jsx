@@ -9,7 +9,7 @@ import {
   RiPlaneLine 
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaStar, FaCheckCircle} from "react-icons/fa";
+import { FaArrowRight, FaCheckCircle} from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
 
 const Services = () => {
@@ -120,10 +120,10 @@ const Services = () => {
 
         {/* Header Section */}
         <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          {/* <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
             <FaStar className="text-sm" />
             Premium Business Solutions
-          </div>
+          </div> */}
           <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
             Comprehensive services designed to accelerate your business growth and ensure lasting success in today&apos;s competitive landscape.
           </p>
@@ -132,7 +132,7 @@ const Services = () => {
         {/* Services Grid */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 md:pb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
-            {servicesData.map((service, index) => (
+            {servicesData.map((service, ) => (
               <div
                 key={service.id}
                 className="group relative bg-white rounded-2xl md:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-red-200 overflow-hidden"
@@ -140,10 +140,7 @@ const Services = () => {
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
                 
-                {/* Service Number Badge */}
-                <div className="absolute top-4 md:top-6 right-4 md:right-6 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center text-white text-xs md:text-sm font-bold z-10">
-                  {index + 1}
-                </div>
+
 
                 {/* Category Badge */}
                 <div className="absolute top-4 md:top-6 left-4 md:left-6 bg-white/90 backdrop-blur-sm text-gray-600 px-2 md:px-3 py-1 rounded-full text-xs font-semibold z-10">

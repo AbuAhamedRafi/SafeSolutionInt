@@ -220,7 +220,7 @@ const ExpertiseSection = () => {
                 {/* Main Content */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Left section - Diamond with orbiting icons */}
-                    <div className="relative flex items-center justify-center order-2 lg:order-1">
+                    <div className="relative flex items-center justify-center order-1 lg:order-1">
                         <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px]">
                             {/* Outer diamond with enhanced gradient and pulse */}
                             <div className="diamond-outer absolute inset-0 bg-gradient-to-br from-red-500 via-red-600 to-orange-500 rotate-45 rounded-3xl shadow-2xl opacity-90">
@@ -286,7 +286,7 @@ const ExpertiseSection = () => {
                     </div>
 
                     {/* Right content - Enhanced Features */}
-                    <div className="space-y-6 md:space-y-8 order-1 lg:order-2">
+                    <div className="space-y-6 md:space-y-8 order-2 lg:order-2">
                         <div className="grid gap-4 md:gap-6">
                             {features.map((item, i) => (
                                 <div

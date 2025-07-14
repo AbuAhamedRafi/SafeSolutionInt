@@ -35,10 +35,12 @@ export default function Navbar() {
           isScrolled ? "h-0 overflow-hidden opacity-0" : "h-auto opacity-100"
         }`}
       >
-        {/* Logo and Tagline */}
-        <div className="flex items-center space-x-5">
+        <Link
+          to="/"
+          className="flex items-center space-x-5 hover:opacity-80 transition-opacity duration-200"
+        >
           <img
-            src="https://images.seeklogo.com/logo-png/48/2/scuba-scholl-international-logo-png_seeklogo-483233.png"
+            src="/images/logo.png"
             alt="Safe solution International"
             className="w-16"
           />
@@ -46,9 +48,9 @@ export default function Navbar() {
             <h1 className="text-lg font-semibold">
               Safe Solution International
             </h1>
-            <p className="text-sm text-gray-500">Start Stong, Start Right</p>
+            <p className="text-sm text-gray-500">Start Strong, Start Right</p>
           </div>
-        </div>
+        </Link>
 
         {/* Contact Info */}
         <div className="flex space-x-8">
@@ -68,7 +70,9 @@ export default function Navbar() {
             </div>
             <div>
               <p className="text-sm font-semibold">Address</p>
-              <p className="text-gray-600">Flat:6/D, MIS Hawlader Mansion, 613 East Kazipara</p>
+              <p className="text-gray-600">
+                Flat:6/D, MIS Hawlader Mansion, 613 East Kazipara
+              </p>
             </div>
           </div>
         </div>
@@ -76,13 +80,19 @@ export default function Navbar() {
 
       {/* Mobile Header */}
       <div className="flex justify-between items-center px-4 py-3 md:hidden">
-        <div className="flex items-center gap-3">
-          <img src="https://images.seeklogo.com/logo-png/48/2/scuba-scholl-international-logo-png_seeklogo-483233.png" alt="Logo" className="w-8 h-8 xs:w-10 xs:h-10" />
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src="/images/logo.png"
+            alt="Safe solution International"
+            className="w-8 h-8 xs:w-10 xs:h-10"
+          />
           <div className="hidden xs:block">
-            <h1 className="text-sm font-semibold text-gray-900 leading-tight">Safe Solution</h1>
+            <h1 className="text-sm font-semibold text-gray-900 leading-tight">
+              Safe Solution
+            </h1>
             <p className="text-xs text-gray-500">International</p>
           </div>
-        </div>
+        </Link>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="text-2xl text-red-500 focus:outline-none p-2 hover:bg-red-50 rounded-lg transition-colors"
@@ -133,4 +143,3 @@ export default function Navbar() {
     </header>
   );
 }
-
