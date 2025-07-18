@@ -80,7 +80,7 @@ const Footer = () => {
               <div className="space-y-3 text-gray-400 text-sm">
                 <div className="flex items-center justify-center xs:justify-start gap-2">
                   <FaPhone className="text-red-500 flex-shrink-0" />
-                  <span>+880 1713-275781</span>
+                  <span>+880 1675884842</span>
                 </div>
                 <div className="flex items-center justify-center xs:justify-start gap-2">
                   <FaEnvelope className="text-red-500 flex-shrink-0" />
