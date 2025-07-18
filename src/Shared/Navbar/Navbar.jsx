@@ -60,7 +60,7 @@ export default function Navbar() {
             </div>
             <div>
               <p className="text-sm font-semibold">Phone</p>
-              <p className="text-gray-600">+880 1713-275781</p>
+              <p className="text-gray-600">+880 1675884842</p>
             </div>
           </div>
 
