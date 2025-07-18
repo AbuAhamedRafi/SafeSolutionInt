@@ -4,7 +4,6 @@ import {
   FaAward,
   FaCalendarAlt,
   FaUsers,
-  FaTrophy,
   FaEye,
   FaHeart,
   FaShare
@@ -172,10 +171,6 @@ const Projects = () => {
 
           {/* Header Section */}
           <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
-            <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <FaTrophy className="text-sm" />
-              Award-Winning Projects
-            </div>
             <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
               Explore our portfolio of successful projects that showcase our expertise across various industries and technologies.
             </p>

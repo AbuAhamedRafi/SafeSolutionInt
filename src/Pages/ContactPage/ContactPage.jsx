@@ -79,8 +79,8 @@ const ContactPage = () => {
             {
               icon: FaPhone,
               title: "Call Us",
-              info: "+1 (555) 123-4567",
-              description: "Mon-Fri 9am-6pm",
+              info: "+880 1713-275781",
+              description: "Sun-Thu 9am-6pm",
               color: "from-blue-500 to-purple-600"
             },
             {
@@ -93,8 +93,8 @@ const ContactPage = () => {
             {
               icon: FaMapMarkerAlt,
               title: "Visit Us",
-              info: "123 Business Ave",
-              description: "Suite 100, City, State",
+              info: "Flat:6/D, MIS Hawlader Mansion, 613 East Kazipara",
+              description: "Mirpur-2,Dhaka, Bangladesh",
               color: "from-red-500 to-pink-600"
             }
           ].map((contact, index) => (

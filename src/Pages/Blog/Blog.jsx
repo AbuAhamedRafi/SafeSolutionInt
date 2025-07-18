@@ -9,7 +9,6 @@ import {
   FaClock,
   FaStar,
   FaComments,
-  FaTrophy,
   FaAward
 } from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
@@ -181,10 +180,6 @@ const Blog = () => {
 
         {/* Header Section */}
         <div className="text-center mb-16 px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            <FaTrophy className="text-sm" />
-            Industry Insights & Expert Knowledge
-          </div>
           <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed">
             Stay informed with the latest trends, insights, and expert advice to help your business thrive in today&apos;s competitive landscape.
           </p>

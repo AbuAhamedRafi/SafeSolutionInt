@@ -1,9 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const services = [
   {
@@ -67,182 +68,133 @@ const services = [
 export default function ServicesSection() {
   const customStyles = `
     .services-swiper {
-      padding: 0 60px 20px 60px;
-      margin: 0 -60px;
+      padding: 0 3.75rem 1.25rem 3.75rem;
+      margin: 0 -3.75rem;
     }
     
-    /* Mobile responsive adjustments */
     @media (max-width: 768px) {
       .services-swiper {
-        padding: 0 50px 20px 50px;
-        margin: 0 -50px;
+        padding: 0 0 3rem 0;
+        margin: 0;
       }
     }
     
     @media (max-width: 640px) {
       .services-swiper {
-        padding: 0 45px 20px 45px;
-        margin: 0 -45px;
+        padding: 0 0 3rem 0;
+        margin: 0;
       }
     }
     
+    @media (max-width: 480px) {
+      .services-swiper {
+        padding: 0 0 3rem 0;
+        margin: 0;
+      }
+    }
+    
+    /* Navigation buttons - Desktop only */
     .services-swiper .swiper-button-next,
     .services-swiper .swiper-button-prev {
       color: #ef4444 !important;
-      font-weight: bold !important;
       background: rgba(255, 255, 255, 0.95) !important;
       border-radius: 50% !important;
-      width: 55px !important;
-      height: 55px !important;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+      width: 3.5rem !important;
+      height: 3.5rem !important;
+      box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.1) !important;
       transition: all 0.3s ease !important;
-      z-index: 10 !important;
+      backdrop-filter: blur(0.625rem) !important;
+      border: 1px solid rgba(239, 68, 68, 0.1) !important;
       margin-top: 0 !important;
-      backdrop-filter: blur(10px) !important;
-      border: 2px solid rgba(239, 68, 68, 0.1) !important;
+      z-index: 10 !important;
     }
     
-    /* Mobile responsive buttons - larger touch targets */
-    @media (max-width: 768px) {
-      .services-swiper .swiper-button-next,
-      .services-swiper .swiper-button-prev {
-        width: 50px !important;
-        height: 50px !important;
-        background: rgba(239, 68, 68, 0.9) !important;
-        color: white !important;
-        border: none !important;
-        box-shadow: 0 6px 15px rgba(239, 68, 68, 0.3) !important;
-      }
-      
-      .services-swiper .swiper-button-next:after,
-      .services-swiper .swiper-button-prev:after {
-        font-size: 18px !important;
-        font-weight: 700 !important;
-      }
+    .services-swiper .swiper-button-next:after,
+    .services-swiper .swiper-button-prev:after {
+      font-size: 1.25rem !important;
+      font-weight: 700 !important;
     }
     
-    @media (max-width: 640px) {
-      .services-swiper .swiper-button-next,
-      .services-swiper .swiper-button-prev {
-        width: 44px !important;
-        height: 44px !important;
-        background: linear-gradient(45deg, #ef4444, #f97316) !important;
-        color: white !important;
-        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4) !important;
-      }
-      
-      .services-swiper .swiper-button-next:after,
-      .services-swiper .swiper-button-prev:after {
-        font-size: 16px !important;
-        font-weight: 600 !important;
-      }
-    }
-    
-    /* Better positioning */
     .services-swiper .swiper-button-next {
-      right: 8px !important;
+      right: 0.5rem !important;
     }
     
     .services-swiper .swiper-button-prev {
-      left: 8px !important;
+      left: 0.5rem !important;
     }
     
-    /* Mobile positioning - better touch accessibility */
-    @media (max-width: 768px) {
-      .services-swiper .swiper-button-next {
-        right: 6px !important;
-      }
-      
-      .services-swiper .swiper-button-prev {
-        left: 6px !important;
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .services-swiper .swiper-button-next {
-        right: 4px !important;
-      }
-      
-      .services-swiper .swiper-button-prev {
-        left: 4px !important;
-      }
-    }
-    
-    /* Hover effects */
     .services-swiper .swiper-button-next:hover,
     .services-swiper .swiper-button-prev:hover {
       background: linear-gradient(45deg, #ef4444, #f97316) !important;
       color: white !important;
       transform: scale(1.05) !important;
-      box-shadow: 0 12px 30px rgba(239,68,68,0.4) !important;
+      box-shadow: 0 0.75rem 1.875rem rgba(239,68,68,0.4) !important;
     }
     
-    /* Mobile hover/active states */
+    /* Hide navigation buttons on mobile */
     @media (max-width: 768px) {
-      .services-swiper .swiper-button-next:hover,
-      .services-swiper .swiper-button-prev:hover,
-      .services-swiper .swiper-button-next:active,
-      .services-swiper .swiper-button-prev:active {
-        transform: scale(0.95) !important;
-        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.5) !important;
+      .services-swiper .swiper-button-next,
+      .services-swiper .swiper-button-prev {
+        display: none !important;
       }
     }
     
-    .services-swiper .swiper-button-next:after,
-    .services-swiper .swiper-button-prev:after {
-      font-size: 20px !important;
-      font-weight: 800 !important;
-    }
-    
-    /* Disabled state */
     .services-swiper .swiper-button-disabled {
       opacity: 0.3 !important;
       cursor: not-allowed !important;
     }
-
-    @keyframes serviceFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
+    
+    /* Pagination - Mobile only */
+    .services-swiper .swiper-pagination {
+      position: relative !important;
+      bottom: auto !important;
+      margin-top: 2rem !important;
+      display: none !important;
     }
     
-    .service-card:hover {
-      animation: serviceFloat 2s ease-in-out infinite;
-    }
-    
-    /* Mobile card adjustments */
-    @media (max-width: 640px) {
-      .service-card:hover {
-        animation: none;
+    @media (max-width: 768px) {
+      .services-swiper .swiper-pagination {
+        display: block !important;
       }
+    }
+    
+    .services-swiper .swiper-pagination-bullet {
+      background: #d1d5db !important;
+      opacity: 1 !important;
+      width: 0.75rem !important;
+      height: 0.75rem !important;
+      margin: 0 0.25rem !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .services-swiper .swiper-pagination-bullet-active {
+      background: linear-gradient(45deg, #ef4444, #f97316) !important;
+      transform: scale(1.2) !important;
+      box-shadow: 0 0.125rem 0.5rem rgba(239, 68, 68, 0.4) !important;
     }
   `;
 
   return (
-    <section className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
 
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-30 blur-3xl"></div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-30 blur-3xl"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-30 blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-30 blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
-          {/* <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            <FaStar className="text-sm" />
-            Premium Services
-          </div> */}
-
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-4 sm:mb-6 text-gray-900 leading-tight">
             Our{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
               Services
             </span>
           </h2>
 
-          <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-gray-600 text-base sm:text-lg lg:text-xl max-w-2xl lg:max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8">
             Comprehensive solutions designed to accelerate your business growth
             and ensure lasting success in today&apos;s competitive landscape.
           </p>
@@ -252,54 +204,58 @@ export default function ServicesSection() {
             className="group inline-flex items-center gap-2 text-red-500 font-semibold hover:text-red-600 transition-colors duration-300"
           >
             View All Services
-            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+            <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </div>
 
         {/* Services Slider */}
         <Swiper
-          modules={[Navigation, Autoplay]}
+          modules={[Navigation, Autoplay, Pagination]}
           navigation
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
-          spaceBetween={24}
+          spaceBetween={16}
           slidesPerView={1}
           breakpoints={{
-            480: { slidesPerView: 1.2, spaceBetween: 16 },
-            640: { slidesPerView: 1.5, spaceBetween: 20 },
-            768: { slidesPerView: 2, spaceBetween: 24 },
-            1024: { slidesPerView: 2.2, spaceBetween: 24 },
-            1280: { slidesPerView: 2.5, spaceBetween: 24 },
+            480: { slidesPerView: 1, spaceBetween: 16 },
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 24 },
+            1280: { slidesPerView: 4, spaceBetween: 24 },
           }}
           className="services-swiper"
         >
           {services.map((service, i) => (
             <SwiperSlide key={i}>
-              <div className="service-card group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 sm:p-8 lg:p-10 flex flex-col h-[480px] sm:h-[520px] lg:h-[580px] border border-gray-100 hover:border-red-200 relative overflow-hidden">
+              <div className="group bg-white/90 backdrop-blur-sm rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-4 flex flex-col h-[400px] border border-gray-100/50 hover:border-red-200 relative overflow-hidden">
                 {/* Card Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-red-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-red-50/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Image Container */}
-                  <div className="relative overflow-hidden rounded-2xl mb-6 sm:mb-8 group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                  <div className="relative overflow-hidden rounded-lg mb-4 group-hover:transform group-hover:scale-[1.02] transition-transform duration-300">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="rounded-2xl h-40 sm:h-48 lg:h-56 w-full object-cover"
+                      className="rounded-lg h-40 w-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
                   </div>
 
                   {/* Content */}
-                  <div className="flex-grow flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-bold text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4 lg:mb-5 text-gray-800 group-hover:text-red-600 transition-colors duration-300 line-clamp-2 leading-tight">
+                  <div className="flex-grow flex flex-col justify-between space-y-3">
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-lg text-gray-800 group-hover:text-red-600 transition-colors duration-300 line-clamp-2 leading-tight">
                         {service.title}
                       </h3>
-                      <p className="text-gray-600 mb-4 sm:mb-6 lg:mb-8 leading-relaxed line-clamp-3 text-sm sm:text-base">
+                      <p className="text-gray-600 leading-relaxed line-clamp-2 text-sm">
                         {service.desc}
                       </p>
                     </div>
@@ -307,10 +263,10 @@ export default function ServicesSection() {
                     {/* Action Button */}
                     <Link
                       to={`/service_details/${service.id}`}
-                      className="group/btn relative inline-flex items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-2xl py-3 sm:py-4 px-6 sm:px-8 font-semibold text-sm sm:text-base hover:shadow-lg transform hover:scale-105 transition-all duration-300 mt-auto overflow-hidden"
+                      className="group/btn relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-lg py-2.5 px-4 font-semibold text-sm hover:shadow-lg transform hover:scale-105 transition-all duration-300 mt-auto overflow-hidden"
                     >
                       <span className="relative z-10">See Details</span>
-                      <FaArrowRight className="relative z-10 group-hover/btn:translate-x-1 transition-transform text-xs sm:text-sm" />
+                      <FaArrowRight className="relative z-10 w-3 h-3 group-hover/btn:translate-x-1 transition-transform duration-300" />
 
                       {/* Button Shine Effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"></div>

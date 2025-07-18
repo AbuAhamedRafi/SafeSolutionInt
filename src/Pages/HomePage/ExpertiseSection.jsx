@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
     FaLightbulb,
     FaServer,
@@ -9,7 +10,6 @@ import {
     FaCheckCircle,
     FaEye,
     FaEdit,
-    FaAward,
 } from "react-icons/fa";
 
 // Icons matching the services offered
@@ -51,6 +51,39 @@ const features = [
 ];
 
 const ExpertiseSection = () => {
+    // Mobile detection and responsive handling
+    const [isMobile, setIsMobile] = useState(false);
+    const [orbitRadius, setOrbitRadius] = useState(185);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            
+            // Set radius based on screen size
+            if (window.innerWidth < 640) {
+                setOrbitRadius(130);
+            } else if (window.innerWidth < 768) {
+                setOrbitRadius(150);
+            } else {
+                setOrbitRadius(185);
+            }
+        };
+
+        checkMobile();
+        const handleResize = () => {
+            // Debounce resize events
+            clearTimeout(window.resizeTimeout);
+            window.resizeTimeout = setTimeout(checkMobile, 150);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(window.resizeTimeout);
+        };
+    }, []);
+
     const animationKeyframes = `
         @keyframes orbitRotate {
             0% { transform: rotate(0deg); }
@@ -97,6 +130,7 @@ const ExpertiseSection = () => {
         
         .orbit-container {
             animation: orbitRotate 25s linear infinite;
+            will-change: transform;
         }
         
         .orbit-item {
@@ -110,6 +144,7 @@ const ExpertiseSection = () => {
             animation: iconFloat 4s ease-in-out infinite, iconGlow 3s ease-in-out infinite;
             position: relative;
             transform: translate(-50%, -50%);
+            will-change: transform;
         }
         
         .icon-content {
@@ -119,6 +154,7 @@ const ExpertiseSection = () => {
             justify-content: center;
             width: 100%;
             height: 100%;
+            will-change: transform;
         }
         
         .floating-icon::before {
@@ -149,6 +185,7 @@ const ExpertiseSection = () => {
         
         .diamond-outer {
             animation: diamondPulse 6s ease-in-out infinite;
+            will-change: transform;
         }
         
         .stats-card {
@@ -168,19 +205,60 @@ const ExpertiseSection = () => {
             transform: translateX(8px);
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
+        
+        /* Mobile-specific optimizations */
+        @media (max-width: 767px) {
+            .orbit-container {
+                animation-duration: 35s;
+            }
+            
+            .icon-content {
+                animation-duration: 35s;
+            }
+            
+            .floating-icon {
+                animation: iconFloat 6s ease-in-out infinite;
+            }
+            
+            .floating-icon::before {
+                display: none;
+            }
+            
+            .feature-card:hover {
+                transform: translateX(4px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .stats-card:hover {
+                transform: translateY(-4px) scale(1.02);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            }
+            
+            .diamond-outer {
+                animation-duration: 8s;
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     `;
 
     return (
         <section className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 py-24 px-4 sm:px-8 overflow-hidden">
             <style dangerouslySetInnerHTML={{ __html: animationKeyframes }} />
             
-            {/* Enhanced background decorative elements */}
+            {/* Enhanced background decorative elements - optimized for mobile */}
             <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-20 blur-3xl animate-pulse"></div>
-                <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-20 blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+                <div className={`absolute -top-24 -right-24 ${isMobile ? 'w-60 h-60' : 'w-96 h-96'} bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-20 blur-3xl animate-pulse`}></div>
+                <div className={`absolute -bottom-24 -left-24 ${isMobile ? 'w-60 h-60' : 'w-96 h-96'} bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-20 blur-3xl animate-pulse`} style={{ animationDelay: '2s' }}></div>
                 
-                {/* Floating particles */}
-                {[...Array(6)].map((_, i) => (
+                {/* Floating particles - reduced for mobile */}
+                {[...Array(isMobile ? 3 : 6)].map((_, i) => (
                     <div
                         key={i}
                         className="absolute w-2 h-2 bg-red-400/30 rounded-full animate-ping"
@@ -201,10 +279,6 @@ const ExpertiseSection = () => {
             <div className="relative max-w-7xl mx-auto">
                 {/* Header Section */}
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-2 bg-red-50 text-red-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                        <FaAward className="text-sm" />
-                        World-Class Expertise
-                    </div>
                     <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
                         Build Your Vision With a{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">
@@ -246,13 +320,12 @@ const ExpertiseSection = () => {
                                 {/* Service icons orbiting around the center */}
                                 {iconsLeft.map((item, i) => {
                                     const angle = (360 / iconsLeft.length) * i;
-                                    const radius = window.innerWidth < 640 ? 135 : window.innerWidth < 768 ? 155 : 185; // Responsive radius
                                     return (
                                         <div
                                             key={i}
                                             className="orbit-item"
                                             style={{
-                                                transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
+                                                transform: `rotate(${angle}deg) translate(${orbitRadius}px) rotate(-${angle}deg)`,
                                             }}
                                         >
                                             <div
@@ -278,10 +351,14 @@ const ExpertiseSection = () => {
                                 })}
                             </div>
                             
-                            {/* Enhanced decorative orbit rings */}
-                            <div className="absolute inset-[-30px] border-2 border-blue-200/40 rounded-full animate-spin opacity-60" style={{ animationDuration: '40s' }}></div>
-                            <div className="absolute inset-[-60px] border border-purple-200/30 rounded-full animate-spin opacity-40" style={{ animationDuration: '60s', animationDirection: 'reverse' }}></div>
-                            <div className="absolute inset-[-90px] border border-red-200/20 rounded-full animate-spin opacity-30" style={{ animationDuration: '80s' }}></div>
+                            {/* Enhanced decorative orbit rings - simplified for mobile */}
+                            {!isMobile && (
+                                <>
+                                    <div className="absolute inset-[-30px] border-2 border-blue-200/40 rounded-full animate-spin opacity-60" style={{ animationDuration: '40s' }}></div>
+                                    <div className="absolute inset-[-60px] border border-purple-200/30 rounded-full animate-spin opacity-40" style={{ animationDuration: '60s', animationDirection: 'reverse' }}></div>
+                                </>
+                            )}
+                            <div className="absolute inset-[-90px] border border-red-200/20 rounded-full animate-spin opacity-30" style={{ animationDuration: isMobile ? '60s' : '80s' }}></div>
                         </div>
                     </div>
 
