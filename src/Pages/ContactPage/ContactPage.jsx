@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle, FaRocket, FaShieldAlt, FaArrowRight } from "react-icons/fa";
+import { useState, useRef } from "react";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle, FaRocket, FaShieldAlt, FaArrowRight, FaSpinner } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
+import { emailConfig } from '../../config/emailjs';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -12,43 +14,190 @@ const ContactPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitCount, setSubmitCount] = useState(0);
+  const [lastSubmitTime, setLastSubmitTime] = useState(0);
+  const [honeypot, setHoneypot] = useState("");
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  const formStartTime = useRef(Date.now());
+
+  // Security constants
+  const MAX_SUBMISSIONS_PER_HOUR = 3;
+  const MIN_FORM_TIME = 3000; // 3 seconds minimum to fill form
+  const RATE_LIMIT_COOLDOWN = 60 * 60 * 1000; // 1 hour in milliseconds
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    
+    // Honeypot trap
+    if (name === 'website') {
+      setHoneypot(value);
+      return;
+    }
+    
+    // Input sanitization
+    let sanitizedValue = value;
+    if (type === 'text' || type === 'email') {
+      // Remove potentially malicious characters
+      sanitizedValue = value.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+                           .replace(/javascript:/gi, '')
+                           .replace(/on\w+=/gi, '')
+                           .trim();
+      
+      // Limit input length
+      const maxLengths = {
+        name: 100,
+        email: 150,
+        phone: 20,
+        company: 150,
+        message: 1000
+      };
+      
+      if (sanitizedValue.length > (maxLengths[name] || 500)) {
+        sanitizedValue = sanitizedValue.substring(0, maxLengths[name] || 500);
+      }
+    }
+    
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : sanitizedValue,
     });
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required";
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
-      newErrors.email = "Enter a valid email";
+    
+    // Basic validation
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (formData.name.length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    } else if (!/^[a-zA-Z\s.-]+$/.test(formData.name)) {
+      newErrors.name = "Name contains invalid characters";
     }
-    if (!formData.message) newErrors.message = "Message is required";
-    if (!formData.terms) newErrors.terms = "You must accept the terms";
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email address";
+    } else if (formData.email.length > 150) {
+      newErrors.email = "Email is too long";
+    }
+    
+    if (formData.phone && !/^[\d\s+()-]+$/.test(formData.phone)) {
+      newErrors.phone = "Phone number contains invalid characters";
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    } else if (formData.message.length > 1000) {
+      newErrors.message = "Message is too long (max 1000 characters)";
+    }
+    
+    if (!formData.terms) {
+      newErrors.terms = "You must accept the terms";
+    }
+    
+    // Security validations
+    
+    // Check for spam patterns
+    const spamPatterns = [
+      /(.)\1{10,}/i, // Repeated characters
+      /(viagra|casino|lottery|winner|congratulations|urgent|limited time)/i,
+      /https?:\/\/[^\s]+/g, // Multiple URLs
+    ];
+    
+    const textToCheck = `${formData.name} ${formData.message} ${formData.company}`;
+    spamPatterns.forEach(pattern => {
+      if (pattern.test(textToCheck)) {
+        newErrors.spam = "Message appears to be spam";
+      }
+    });
+    
+    // Check honeypot
+    if (honeypot.trim() !== "") {
+      newErrors.bot = "Bot detected";
+    }
+    
+    // Rate limiting check
+    const now = Date.now();
+    const timeSinceLastSubmit = now - lastSubmitTime;
+    
+    if (submitCount >= MAX_SUBMISSIONS_PER_HOUR && timeSinceLastSubmit < RATE_LIMIT_COOLDOWN) {
+      const remainingTime = Math.ceil((RATE_LIMIT_COOLDOWN - timeSinceLastSubmit) / (1000 * 60));
+      newErrors.rateLimit = `Too many submissions. Please try again in ${remainingTime} minutes.`;
+    }
+    
+    // Check minimum form filling time (bot detection)
+    const formFillTime = now - formStartTime.current;
+    if (formFillTime < MIN_FORM_TIME) {
+      newErrors.fastSubmit = "Please take your time to fill the form properly";
+    }
+    
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (isSubmitting) return; // Prevent double submission
+    
     const validationErrors = validate();
     setErrors(validationErrors);
+    
     if (Object.keys(validationErrors).length === 0) {
-      alert("Message sent successfully!");
-      console.log("Form Submitted:", formData);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        company: "",
-        message: "",
-        terms: false,
-      });
+      setIsSubmitting(true);
+      setSubmitStatus(null);
+      
+      try {
+        // EmailJS Configuration (You need to set these up in EmailJS dashboard)
+        const { serviceId, templateId, publicKey } = emailConfig;
+        
+        // Prepare template parameters
+        const templateParams = {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone || 'Not provided',
+          company: formData.company || 'Not provided',
+          message: formData.message,
+          to_email: 'info@safesolutionint.com', // Your email
+          reply_to: formData.email,
+          timestamp: new Date().toLocaleString(),
+        };
+        
+        // Send email using EmailJS
+        await emailjs.send(serviceId, templateId, templateParams, publicKey);
+        
+        // Success
+        setSubmitStatus('success');
+        setSubmitCount(prev => prev + 1);
+        setLastSubmitTime(Date.now());
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+          terms: false,
+        });
+        
+        // Reset form start time for next submission
+        formStartTime.current = Date.now();
+        
+        // Show success message for 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000);
+        
+      } catch (error) {
+        console.error('EmailJS Error:', error);
+        setSubmitStatus('error');
+        setTimeout(() => setSubmitStatus(null), 5000);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -120,6 +269,41 @@ const ContactPage = () => {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+              {/* Honeypot field - hidden from users but visible to bots */}
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={handleChange}
+                style={{ display: 'none' }}
+                tabIndex="-1"
+                autoComplete="off"
+              />
+              
+              {/* Success/Error Messages */}
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                  <FaCheckCircle className="text-green-600" />
+                  <span>Message sent successfully! We&apos;ll get back to you within 24 hours.</span>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                  <span>Failed to send message. Please try again or contact us directly.</span>
+                </div>
+              )}
+              
+              {/* Rate limit or security errors */}
+              {(errors.rateLimit || errors.bot || errors.spam || errors.fastSubmit) && (
+                <div className="bg-orange-50 border border-orange-200 text-orange-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                  <FaShieldAlt className="text-orange-600" />
+                  <span>
+                    {errors.rateLimit || errors.bot || errors.spam || errors.fastSubmit}
+                  </span>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 {[
                   { name: "name", label: "Full Name *", type: "text" },
@@ -205,10 +389,24 @@ const ContactPage = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-colors inline-flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className={`w-full px-8 py-4 rounded-xl font-semibold transition-colors inline-flex items-center justify-center gap-2 ${
+                    isSubmitting 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                  }`}
                 >
-                  Send Message
-                  <FaArrowRight />
+                  {isSubmitting ? (
+                    <>
+                      <FaSpinner className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <FaArrowRight />
+                    </>
+                  )}
                 </button>
               </div>
             </form>
