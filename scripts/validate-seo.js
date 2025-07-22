@@ -111,8 +111,21 @@ const validateSEO = () => {
     const packageContent = fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8');
     const packageJson = JSON.parse(packageContent);
     
-    if (!packageJson.dependencies['react-helmet-async']) {
-      warnings.push('Consider adding react-helmet-async for dynamic meta tag management');
+    // Check if we have SEO components
+    const seoFiles = [
+      'src/components/SEO.jsx',
+      'src/components/StructuredData.jsx'
+    ];
+    
+    let hasSeoComponents = true;
+    seoFiles.forEach(file => {
+      if (!fs.existsSync(path.join(process.cwd(), file))) {
+        hasSeoComponents = false;
+      }
+    });
+    
+    if (!hasSeoComponents) {
+      warnings.push('Missing SEO components for dynamic meta tag management');
     }
     
   } catch (e) {
@@ -143,7 +156,7 @@ const validateSEO = () => {
 };
 
 // Run validation if script is called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url.endsWith(process.argv[1].replace(/\\/g, '/'))) {
   const exitCode = validateSEO();
   process.exit(exitCode);
 }
