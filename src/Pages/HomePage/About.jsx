@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { FaUsers, FaProjectDiagram, FaHandshake, FaAward, FaCheckCircle } from "react-icons/fa";
 
 const stats = [
-    { label: "Team Members", target: 60, icon: <FaUsers className="text-blue-500" /> },
-    { label: "Projects Completed", target: 1220, icon: <FaProjectDiagram className="text-green-500" /> },
+    { label: "Team Members", target: 20, icon: <FaUsers className="text-blue-500" /> },
+    { label: "Projects Completed", target: 100, icon: <FaProjectDiagram className="text-green-500" /> },
     { label: "Happy Clients", target: 200, icon: <FaHandshake className="text-purple-500" /> },
-    { label: "Awards Won", target: 150, icon: <FaAward className="text-yellow-500" /> },
+    { label: "Contracts", target: 50, icon: <FaAward className="text-yellow-500" /> },
 ];
 
 const features = [
@@ -50,12 +50,6 @@ const About = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                     {/* Left Content */}
                     <div className="space-y-6 md:space-y-8 order-2 lg:order-1">
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-semibold">
-                            <FaAward className="text-xs md:text-sm" />
-                            About Safe Solution International
-                        </div>
-
                         {/* Main Heading */}
                         <h2 className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
                             Who{" "}

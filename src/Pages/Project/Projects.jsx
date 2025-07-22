@@ -9,6 +9,7 @@ import {
   FaShare
 } from "react-icons/fa";
 import SectionTitle from '../../components/SectionTitle';
+import SEO from '../../components/SEO';
 
 const Projects = () => {
     const projectsData = [
@@ -156,6 +157,14 @@ const Projects = () => {
   
     return (
       <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
+        <SEO 
+          title="Our Projects - Safe Solution International | Portfolio & Case Studies"
+          description="Explore our successful project portfolio including enterprise work management systems, smart city infrastructure, e-commerce platforms, and construction projects. See our proven track record with 100+ completed projects."
+          keywords="Safe Solution International projects, project portfolio Bangladesh, enterprise management systems, smart city infrastructure, e-commerce development, construction projects, IT solutions case studies"
+          url="/projects"
+          type="website"
+        />
+        
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-20 blur-3xl animate-pulse"></div>

@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaCheckCircle} from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
+import SEO from "../../components/SEO";
 
 const Services = () => {
   const servicesData = [
@@ -106,6 +107,14 @@ const Services = () => {
 
   return (
     <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
+      <SEO 
+        title="Our Services - Safe Solution International | Business Consultancy & IT Solutions"
+        description="Explore our comprehensive business services including startup consultancy, IT infrastructure, government tender support, transportation & logistics, project management, and digital marketing solutions in Bangladesh."
+        keywords="business services Bangladesh, startup consultancy, IT infrastructure services, government tender support, transportation logistics, project management, digital marketing, event management, Safe Solution International services"
+        url="/service"
+        type="website"
+      />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-20 blur-3xl"></div>

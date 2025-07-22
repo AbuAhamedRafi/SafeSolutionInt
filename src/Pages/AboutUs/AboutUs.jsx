@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
 import { FaCheckCircle, FaUsers, FaProjectDiagram, FaAward, FaRocket, FaShieldAlt, FaClock, FaArrowRight } from "react-icons/fa";
+import SEO from "../../components/SEO";
 
 const AboutUs = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+      <SEO 
+        title="About Safe Solution International - Leading Business Consultancy in Bangladesh"
+        description="Learn about Safe Solution International, a leading business consultancy firm in Bangladesh. We provide comprehensive solutions including startup support, IT infrastructure, government tender assistance, and project management services with 3+ years of experience."
+        keywords="about Safe Solution International, business consultancy Bangladesh, company profile, startup support Bangladesh, IT services company, project management firm, government tender support"
+        url="/about"
+        type="website"
+      />
+      
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-slate-900 via-gray-900 to-slate-800 py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>

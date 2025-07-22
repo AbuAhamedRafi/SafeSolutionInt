@@ -12,6 +12,7 @@ import {
   FaAward
 } from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
+import SEO from "../../components/SEO";
 
 const Blog = () => {
   const blogData = [
@@ -165,6 +166,14 @@ const Blog = () => {
 
   return (
     <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
+      <SEO 
+        title="Blog - Safe Solution International | Latest Insights & Industry News"
+        description="Stay updated with the latest insights on business solutions, digital transformation, IT infrastructure, startup tips, and industry trends from Safe Solution International experts."
+        keywords="business blog Bangladesh, digital transformation insights, startup tips, IT infrastructure guides, business solutions articles, industry trends Bangladesh, Safe Solution International blog"
+        url="/blog"
+        type="website"
+      />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-20 blur-3xl animate-pulse"></div>

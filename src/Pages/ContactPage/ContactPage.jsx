@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle, FaRocket, FaShieldAlt, FaArrowRight, FaSpinner } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheckCircle, FaShieldAlt, FaArrowRight, FaSpinner } from "react-icons/fa";
 import emailjs from '@emailjs/browser';
 import { emailConfig } from '../../config/emailjs';
+import SEO from "../../components/SEO";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -157,6 +158,7 @@ const ContactPage = () => {
         
         // Prepare template parameters
         const templateParams = {
+          title: 'Got a New Message in Safe Solutions International website',
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone || 'Not provided',
@@ -203,279 +205,249 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-gray-900 to-slate-800 py-20 overflow-hidden">
+      <SEO 
+        title="Contact Us - Safe Solution International | Get in Touch"
+        description="Contact Safe Solution International for your business needs. Get professional consultancy, IT solutions, and project management services. Reach out to us for startup support and government tender assistance in Bangladesh."
+        keywords="contact Safe Solution International, business consultancy contact, IT solutions inquiry, project management contact, startup support Bangladesh, government tender assistance contact"
+        url="/contact"
+        type="website"
+      />
+      
+      {/* Hero Section with Featured Form */}
+      <div className="relative bg-gradient-to-r from-slate-900 via-gray-900 to-slate-800 py-12 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 text-center text-white">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <FaEnvelope className="text-blue-400" />
-            Get In Touch
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4">
+          {/* Header */}
+          <div className="text-center text-white mb-8 md:mb-12">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <FaEnvelope className="text-blue-400" />
+              Get In Touch
+            </div>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+              Let&apos;s Start Your Project
+            </h1>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              Ready to transform your business? Fill out the form below and we&apos;ll get back to you within 24 hours.
+            </p>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
-            Say Hello to Us
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to reduce costs and create new revenue? Have questions about our services? We&apos;d love to hear from you.
-          </p>
+
+          {/* Featured Contact Form */}
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-2xl border border-white/20">
+              <div className="text-center mb-6 md:mb-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Send us a Message</h2>
+                <p className="text-gray-600 text-sm md:text-base">
+                  Fill out the form below and our team will respond within 24 hours
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Honeypot field - hidden from users but visible to bots */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={handleChange}
+                  style={{ display: 'none' }}
+                  tabIndex="-1"
+                  autoComplete="off"
+                />
+                
+                {/* Success/Error Messages */}
+                {submitStatus === 'success' && (
+                  <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                    <FaCheckCircle className="text-green-600" />
+                    <span>Message sent successfully! We&apos;ll get back to you within 24 hours.</span>
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                    <span>Failed to send message. Please try again or contact us directly.</span>
+                  </div>
+                )}
+                
+                {/* Rate limit or security errors */}
+                {(errors.rateLimit || errors.bot || errors.spam || errors.fastSubmit) && (
+                  <div className="bg-orange-50 border border-orange-200 text-orange-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                    <FaShieldAlt className="text-orange-600" />
+                    <span>
+                      {errors.rateLimit || errors.bot || errors.spam || errors.fastSubmit}
+                    </span>
+                  </div>
+                )}
+
+                {/* Form Fields */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {[
+                    { name: "name", label: "Full Name *", type: "text" },
+                    { name: "email", label: "Email Address *", type: "email" },
+                    { name: "phone", label: "Phone Number", type: "text" },
+                    { name: "company", label: "Company Name", type: "text" },
+                  ].map((field) => (
+                    <div key={field.name} className="relative group">
+                      <input
+                        type={field.type}
+                        name={field.name}
+                        id={field.name}
+                        value={formData[field.name]}
+                        onChange={handleChange}
+                        placeholder=" "
+                        className={`peer w-full px-4 py-4 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 focus:outline-none text-base ${
+                          errors[field.name] 
+                            ? "border-red-500 focus:border-red-500" 
+                            : "border-gray-200 focus:border-blue-500 hover:border-gray-300"
+                        }`}
+                      />
+                      <label
+                        htmlFor={field.name}
+                        className="absolute left-4 top-4 text-gray-500 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs"
+                      >
+                        {field.label}
+                      </label>
+                      {errors[field.name] && (
+                        <p className="text-red-500 text-sm mt-2 flex items-center gap-1">
+                          {errors[field.name]}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Message Field */}
+                <div className="relative group">
+                  <textarea
+                    name="message"
+                    id="message"
+                    rows="5"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder=" "
+                    className={`peer w-full px-4 py-4 border-2 rounded-xl bg-gray-50 focus:bg-white transition-all duration-300 focus:outline-none resize-none text-base ${
+                      errors.message 
+                        ? "border-red-500 focus:border-red-500" 
+                        : "border-gray-200 focus:border-blue-500 hover:border-gray-300"
+                    }`}
+                  ></textarea>
+                  <label
+                    htmlFor="message"
+                    className="absolute left-4 top-4 text-gray-500 transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-xs"
+                  >
+                    Your Message *
+                  </label>
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-2">{errors.message}</p>
+                  )}
+                </div>
+
+                {/* Terms and Submit */}
+                <div className="space-y-6">
+                  <label className="flex items-start gap-3 text-sm text-gray-600 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="terms"
+                      checked={formData.terms}
+                      onChange={handleChange}
+                      className="mt-1 w-5 h-5 text-blue-600 rounded focus:ring-blue-500 transition-all"
+                    />
+                    <span>
+                      I have read and accept the{" "}
+                      <a href="#" className="text-blue-600 hover:text-blue-700 underline font-medium">
+                        Terms of Service & Privacy Policy *
+                      </a>
+                    </span>
+                  </label>
+                  {errors.terms && (
+                    <p className="text-red-500 text-sm">{errors.terms}</p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`w-full px-8 py-5 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center gap-3 shadow-lg ${
+                      isSubmitting 
+                        ? 'bg-gray-400 cursor-not-allowed' 
+                        : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white hover:shadow-xl transform hover:scale-105'
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <FaSpinner className="animate-spin text-xl" />
+                        Sending Message...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <FaArrowRight className="text-lg" />
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Contact Info Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {[
-            {
-              icon: FaPhone,
-              title: "Call Us",
-              info: "+880 1713-275781",
-              description: "Sun-Thu 9am-6pm",
-              color: "from-blue-500 to-purple-600"
-            },
-            {
-              icon: FaEnvelope,
-              title: "Email Us",
-              info: "info@safesolutionint.com",
-              description: "24/7 Support",
-              color: "from-green-500 to-teal-600"
-            },
-            {
-              icon: FaMapMarkerAlt,
-              title: "Visit Us",
-              info: "Flat:6/D, MIS Hawlader Mansion, 613 East Kazipara",
-              description: "Mirpur-2,Dhaka, Bangladesh",
-              color: "from-red-500 to-pink-600"
-            }
-          ].map((contact, index) => (
-            <div key={index} className="group bg-white rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 text-center">
-              <div className={`w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                <contact.icon className="text-xl md:text-2xl text-white" />
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-2">{contact.title}</h3>
-              <p className="text-base md:text-lg font-semibold text-gray-700 mb-1 break-words">{contact.info}</p>
-              <p className="text-sm md:text-base text-gray-500">{contact.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100">
-            <div className="mb-6 md:mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">Send us a Message</h2>
-              <p className="text-gray-600 text-sm md:text-base">
-                Fill out the form below and we&apos;ll get back to you within 24 hours.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-              {/* Honeypot field - hidden from users but visible to bots */}
-              <input
-                type="text"
-                name="website"
-                value={honeypot}
-                onChange={handleChange}
-                style={{ display: 'none' }}
-                tabIndex="-1"
-                autoComplete="off"
-              />
-              
-              {/* Success/Error Messages */}
-              {submitStatus === 'success' && (
-                <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl flex items-center gap-2">
-                  <FaCheckCircle className="text-green-600" />
-                  <span>Message sent successfully! We&apos;ll get back to you within 24 hours.</span>
-                </div>
-              )}
-              
-              {submitStatus === 'error' && (
-                <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl flex items-center gap-2">
-                  <span>Failed to send message. Please try again or contact us directly.</span>
-                </div>
-              )}
-              
-              {/* Rate limit or security errors */}
-              {(errors.rateLimit || errors.bot || errors.spam || errors.fastSubmit) && (
-                <div className="bg-orange-50 border border-orange-200 text-orange-800 px-4 py-3 rounded-xl flex items-center gap-2">
-                  <FaShieldAlt className="text-orange-600" />
-                  <span>
-                    {errors.rateLimit || errors.bot || errors.spam || errors.fastSubmit}
-                  </span>
-                </div>
-              )}
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                {[
-                  { name: "name", label: "Full Name *", type: "text" },
-                  { name: "email", label: "Email Address *", type: "email" },
-                  { name: "phone", label: "Phone Number", type: "text" },
-                  { name: "company", label: "Company Name", type: "text" },
-                ].map((field) => (
-                  <div key={field.name} className="relative group">
-                    <input
-                      type={field.type}
-                      name={field.name}
-                      id={field.name}
-                      value={formData[field.name]}
-                      onChange={handleChange}
-                      placeholder=" "
-                      className={`peer w-full px-3 md:px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-colors focus:outline-none text-sm md:text-base ${
-                        errors[field.name] 
-                          ? "border-red-500 focus:border-red-500" 
-                          : "border-gray-200 focus:border-blue-500"
-                      }`}
-                    />
-                    <label
-                      htmlFor={field.name}
-                      className="absolute left-3 md:left-4 top-3 text-gray-500 transition-all text-sm md:text-base peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm md:peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-xs"
-                    >
-                      {field.label}
-                    </label>
-                    {errors[field.name] && (
-                      <p className="text-red-500 text-xs md:text-sm mt-1 flex items-center gap-1">
-                        {errors[field.name]}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Message */}
-              <div className="relative group">
-                <textarea
-                  name="message"
-                  id="message"
-                  rows="4"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder=" "
-                  className={`peer w-full px-4 py-3 border-2 rounded-xl bg-gray-50 focus:bg-white transition-colors focus:outline-none resize-none ${
-                    errors.message 
-                      ? "border-red-500 focus:border-red-500" 
-                      : "border-gray-200 focus:border-blue-500"
-                  }`}
-                ></textarea>
-                <label
-                  htmlFor="message"
-                  className="absolute left-4 top-3 text-gray-500 transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500 peer-[:not(:placeholder-shown)]:top-1 peer-[:not(:placeholder-shown)]:text-xs"
-                >
-                  Your Message *
-                </label>
-                {errors.message && (
-                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-                )}
-              </div>
-
-              {/* Terms and Submit */}
-              <div className="space-y-4">
-                <label className="flex items-start gap-3 text-sm text-gray-600 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="terms"
-                    checked={formData.terms}
-                    onChange={handleChange}
-                    className="mt-1 w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                  />
-                  <span>
-                    I have read and accept the{" "}
-                    <a href="#" className="text-blue-600 hover:text-blue-700 underline">
-                      Terms of Service & Privacy Policy *
-                    </a>
-                  </span>
-                </label>
-                {errors.terms && (
-                  <p className="text-red-500 text-sm">{errors.terms}</p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full px-8 py-4 rounded-xl font-semibold transition-colors inline-flex items-center justify-center gap-2 ${
-                    isSubmitting 
-                      ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-blue-600 hover:bg-blue-700 text-white'
-                  }`}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <FaSpinner className="animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <FaArrowRight />
-                    </>
-                  )}
-                </button>
-              </div>
-            </form>
+      {/* Contact Information Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Other Ways to Reach Us
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Prefer a different way to connect? Here are all the ways you can reach our team.
+            </p>
           </div>
 
-          {/* Benefits Section */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">Why Choose Us?</h2>
-              <p className="text-gray-600 mb-8">
-                When you partner with Safe Solution International, you&apos;re choosing excellence, reliability, and comprehensive support for your business needs.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {[
-                {
-                  icon: FaRocket,
-                  title: "Fast Response Time",
-                  description: "We respond to all inquiries within 24 hours and provide quick turnaround on all projects.",
-                  color: "text-blue-500"
-                },
-                {
-                  icon: FaShieldAlt,
-                  title: "Reliable & Secure",
-                  description: "Your data and projects are handled with the highest level of security and confidentiality.",
-                  color: "text-green-500"
-                },
-                {
-                  icon: FaCheckCircle,
-                  title: "Proven Track Record",
-                  description: "Over 1,220 successful projects completed with 300+ satisfied clients across various industries.",
-                  color: "text-purple-500"
-                },
-                {
-                  icon: FaClock,
-                  title: "24/7 Support",
-                  description: "Our dedicated support team is available around the clock to assist you with any questions.",
-                  color: "text-red-500"
-                }
-              ].map((benefit, index) => (
-                <div key={index} className="flex gap-4 p-6 bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
-                      <benefit.icon className={`text-xl ${benefit.color}`} />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{benefit.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Quick Contact */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-              <h3 className="text-xl font-bold mb-4">Need Immediate Assistance?</h3>
-              <p className="text-blue-100 mb-6">
-                For urgent matters or immediate consultation, give us a call directly.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                icon: FaPhone,
+                title: "Call Us",
+                info: "+880 1713-275781",
+                description: "Sun-Thu 9am-6pm",
+                color: "from-blue-500 to-purple-600",
+                action: "tel:+880 1675884842"
+              },
+              {
+                icon: FaEnvelope,
+                title: "Email Us",
+                info: "info@safesolutionint.com",
+                description: "24/7 Support",
+                color: "from-green-500 to-teal-600",
+                action: "mailto:info@safesolutionint.com"
+              },
+              {
+                icon: FaMapMarkerAlt,
+                title: "Visit Us",
+                info: "Flat:6/D, MIS Hawlader Mansion, 613 East Kazipara",
+                description: "Mirpur-2, Dhaka, Bangladesh",
+                color: "from-red-500 to-pink-600",
+                action: "https://maps.google.com"
+              }
+            ].map((contact, index) => (
               <a
-                href="tel:+15551234567"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                key={index}
+                href={contact.action}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 text-center block hover:transform hover:scale-105"
               >
-                <FaPhone />
-                Call Now: +1 (555) 123-4567
+                <div className={`w-16 h-16 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <contact.icon className="text-2xl text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{contact.title}</h3>
+                <p className="text-lg font-semibold text-gray-700 mb-2 break-words">{contact.info}</p>
+                <p className="text-base text-gray-500">{contact.description}</p>
               </a>
-            </div>
+            ))}
           </div>
         </div>
       </div>

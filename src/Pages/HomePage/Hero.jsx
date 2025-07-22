@@ -1,5 +1,4 @@
 import {
-  FaPlay,
   FaCheckCircle,
   FaUsers,
   FaAward,
@@ -65,14 +64,6 @@ const Hero = () => {
                 </div>
               ))}
             </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="group inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white/20 transition-all duration-300">
-                <FaPlay className="text-sm" />
-                Watch Demo
-              </button>
-            </div>
           </div>
 
           {/* Right Side - Stats/Features - Hidden on mobile */}
@@ -80,14 +71,14 @@ const Hero = () => {
             <div className="grid grid-cols-2 gap-6 max-w-md mx-auto lg:mx-0">
               {[
                 {
-                  number: "500+",
+                  number: "100+",
                   label: "Projects Completed",
                   icon: <FaCheckCircle />,
                 },
-                { number: "5000+", label: "Happy Clients", icon: <FaUsers /> },
-                { number: "150+", label: "Awards Won", icon: <FaAward /> },
+                { number: "200+", label: "Happy Clients", icon: <FaUsers /> },
+                { number: "50+", label: "Contracts", icon: <FaAward /> },
                 {
-                  number: "10+",
+                  number: "3+",
                   label: "Years Experience",
                   icon: <FaCheckCircle />,
                 },
