@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 // SEO Build Validation Script
 import fs from 'fs';
 import path from 'path';

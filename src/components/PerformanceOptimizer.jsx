@@ -2,11 +2,9 @@ import { useEffect } from 'react';
 
 const PerformanceOptimizer = () => {
   useEffect(() => {
-    // Preload critical resources
     const preloadLinks = [
       { href: '/images/logo.png', as: 'image' },
       { href: '/images/BG.jpg', as: 'image' },
-      { href: '/images/hero-image.png', as: 'image' },
     ];
 
     preloadLinks.forEach(({ href, as }) => {
@@ -18,7 +16,6 @@ const PerformanceOptimizer = () => {
       document.head.appendChild(link);
     });
 
-    // Add DNS prefetch for external domains
     const dnsPrefetchDomains = [
       'https://fonts.googleapis.com',
       'https://fonts.gstatic.com',
@@ -32,7 +29,6 @@ const PerformanceOptimizer = () => {
       document.head.appendChild(link);
     });
 
-    // Add resource hints for better performance
     const resourceHints = [
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: '' },
@@ -46,7 +42,6 @@ const PerformanceOptimizer = () => {
       document.head.appendChild(link);
     });
 
-    // Optimize images loading
     const images = document.querySelectorAll('img');
     images.forEach(img => {
       if (!img.loading) {
@@ -57,7 +52,6 @@ const PerformanceOptimizer = () => {
       }
     });
 
-    // Add critical CSS inline for above-the-fold content
     const criticalCSS = `
       .hero-section { will-change: transform; }
       .navbar { will-change: transform; }
@@ -68,9 +62,7 @@ const PerformanceOptimizer = () => {
     style.textContent = criticalCSS;
     document.head.appendChild(style);
 
-    // Cleanup function
     return () => {
-      // Remove preload links when component unmounts
       preloadLinks.forEach(({ href }) => {
         const existingLink = document.querySelector(`link[href="${href}"]`);
         if (existingLink) {
@@ -80,7 +72,7 @@ const PerformanceOptimizer = () => {
     };
   }, []);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default PerformanceOptimizer;
