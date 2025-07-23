@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const SEO = ({
   title = "Safe Solution International - Complete Business Solutions",
@@ -12,10 +13,8 @@ const SEO = ({
   siteName = "Safe Solution International",
 }) => {
   useEffect(() => {
-    // Set document title
     document.title = title;
-    
-    // Helper function to update or create meta tags
+
     const updateMetaTag = (property, content, isProperty = false) => {
       const selector = isProperty ? `meta[property="${property}"]` : `meta[name="${property}"]`;
       let metaTag = document.querySelector(selector);
@@ -34,7 +33,6 @@ const SEO = ({
       }
     };
 
-    // Helper function to update or create link tags
     const updateLinkTag = (rel, href) => {
       let linkTag = document.querySelector(`link[rel="${rel}"]`);
       
@@ -53,14 +51,12 @@ const SEO = ({
       ? image 
       : `https://www.safesolutioninternational.org${image}`;
 
-    // Update basic meta tags
     updateMetaTag('description', description);
     updateMetaTag('keywords', keywords);
     updateMetaTag('author', author);
     updateMetaTag('robots', 'index, follow');
     updateMetaTag('language', 'English');
 
-    // Update Open Graph meta tags
     updateMetaTag('og:title', title, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', fullImageUrl, true);
@@ -69,17 +65,14 @@ const SEO = ({
     updateMetaTag('og:site_name', siteName, true);
     updateMetaTag('og:locale', locale, true);
 
-    // Update Twitter Card meta tags
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', title);
     updateMetaTag('twitter:description', description);
     updateMetaTag('twitter:image', fullImageUrl);
     updateMetaTag('twitter:url', fullUrl);
 
-    // Update canonical link
     updateLinkTag('canonical', fullUrl);
 
-    // Add structured data
     const structuredData = {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -116,7 +109,6 @@ const SEO = ({
       ]
     };
 
-    // Update or create structured data script
     let structuredDataScript = document.querySelector('script[type="application/ld+json"]#seo-structured-data');
     if (structuredDataScript) {
       structuredDataScript.textContent = JSON.stringify(structuredData);
@@ -130,7 +122,19 @@ const SEO = ({
 
   }, [title, description, keywords, image, url, type, author, locale, siteName]);
 
-  return null; // This component doesn't render anything visible
+  return null;
+};
+
+SEO.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  keywords: PropTypes.string,
+  image: PropTypes.string,
+  url: PropTypes.string,
+  type: PropTypes.string,
+  author: PropTypes.string,
+  locale: PropTypes.string,
+  siteName: PropTypes.string,
 };
 
 export default SEO;

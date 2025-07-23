@@ -165,7 +165,19 @@ const StructuredData = ({ type, data }) => {
 
 StructuredData.propTypes = {
   type: PropTypes.oneOf(['organization', 'website', 'service', 'article', 'breadcrumb']).isRequired,
-  data: PropTypes.object
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    description: PropTypes.string,
+    serviceType: PropTypes.string,
+    title: PropTypes.string,
+    datePublished: PropTypes.string,
+    dateModified: PropTypes.string,
+    url: PropTypes.string,
+    items: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string,
+      url: PropTypes.string
+    }))
+  })
 };
 
 export default StructuredData;
