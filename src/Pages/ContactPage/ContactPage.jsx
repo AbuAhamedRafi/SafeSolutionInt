@@ -410,7 +410,7 @@ const ContactPage = () => {
                 icon: FaMapMarkerAlt,
                 title: "Visit Us",
                 info: "Flat:6/D, MIS Hawlader Mansion, 613 East Kazipara",
-                description: "Mirpur-2, Dhaka, Bangladesh",
+                description: "Mirpur, Dhaka, Bangladesh",
                 color: "from-red-500 to-pink-600",
                 action: "https://maps.google.com"
               }

@@ -90,7 +90,7 @@ const Footer = () => {
                   <FaMapMarkerAlt className="text-red-500 flex-shrink-0 mt-1" />
                   <span className="leading-relaxed">
                     Flat:6/D, MIS Hawlader Mansion,<br />
-                    613 East Kazipara, Mirpur-2,<br />
+                    613 East Kazipara, Mirpur,<br />
                     Dhaka, Bangladesh
                   </span>
                 </div>
