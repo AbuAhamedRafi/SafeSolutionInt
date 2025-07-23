@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const StructuredData = ({ type, data }) => {
   useEffect(() => {
@@ -136,16 +137,13 @@ const StructuredData = ({ type, data }) => {
     const schema = generateSchema();
 
     if (schema) {
-      // Create unique ID for this structured data
       const scriptId = `structured-data-${type}`;
       
-      // Remove existing script if it exists
       const existingScript = document.getElementById(scriptId);
       if (existingScript) {
         existingScript.remove();
       }
 
-      // Create new script element
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.id = scriptId;
@@ -153,7 +151,6 @@ const StructuredData = ({ type, data }) => {
       document.head.appendChild(script);
     }
 
-    // Cleanup function
     return () => {
       const scriptId = `structured-data-${type}`;
       const script = document.getElementById(scriptId);
@@ -163,7 +160,12 @@ const StructuredData = ({ type, data }) => {
     };
   }, [type, data]);
 
-  return null; // This component doesn't render anything visible
+  return null;
+};
+
+StructuredData.propTypes = {
+  type: PropTypes.oneOf(['organization', 'website', 'service', 'article', 'breadcrumb']).isRequired,
+  data: PropTypes.object
 };
 
 export default StructuredData;
