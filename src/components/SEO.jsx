@@ -57,6 +57,7 @@ const SEO = ({
     updateMetaTag('robots', 'index, follow');
     updateMetaTag('language', 'English');
 
+    //For Facebook and Linked In using Open Graph protocol
     updateMetaTag('og:title', title, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', fullImageUrl, true);
@@ -65,11 +66,6 @@ const SEO = ({
     updateMetaTag('og:site_name', siteName, true);
     updateMetaTag('og:locale', locale, true);
 
-    updateMetaTag('twitter:card', 'summary_large_image');
-    updateMetaTag('twitter:title', title);
-    updateMetaTag('twitter:description', description);
-    updateMetaTag('twitter:image', fullImageUrl);
-    updateMetaTag('twitter:url', fullUrl);
 
     updateLinkTag('canonical', fullUrl);
 

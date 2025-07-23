@@ -19,33 +19,28 @@ const ContactPage = () => {
   const [submitCount, setSubmitCount] = useState(0);
   const [lastSubmitTime, setLastSubmitTime] = useState(0);
   const [honeypot, setHoneypot] = useState("");
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  const [submitStatus, setSubmitStatus] = useState(null); 
   const formStartTime = useRef(Date.now());
 
-  // Security constants
   const MAX_SUBMISSIONS_PER_HOUR = 3;
-  const MIN_FORM_TIME = 3000; // 3 seconds minimum to fill form
-  const RATE_LIMIT_COOLDOWN = 60 * 60 * 1000; // 1 hour in milliseconds
+  const MIN_FORM_TIME = 3000; 
+  const RATE_LIMIT_COOLDOWN = 60 * 60 * 1000; 
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     
-    // Honeypot trap
     if (name === 'website') {
       setHoneypot(value);
       return;
     }
     
-    // Input sanitization
     let sanitizedValue = value;
     if (type === 'text' || type === 'email') {
-      // Remove potentially malicious characters
       sanitizedValue = value.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
                            .replace(/javascript:/gi, '')
                            .replace(/on\w+=/gi, '')
                            .trim();
       
-      // Limit input length
       const maxLengths = {
         name: 100,
         email: 150,
@@ -68,7 +63,6 @@ const ContactPage = () => {
   const validate = () => {
     const newErrors = {};
     
-    // Basic validation
     if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     } else if (formData.name.length < 2) {
@@ -101,13 +95,10 @@ const ContactPage = () => {
       newErrors.terms = "You must accept the terms";
     }
     
-    // Security validations
-    
-    // Check for spam patterns
     const spamPatterns = [
-      /(.)\1{10,}/i, // Repeated characters
+      /(.)\1{10,}/i,
       /(viagra|casino|lottery|winner|congratulations|urgent|limited time)/i,
-      /https?:\/\/[^\s]+/g, // Multiple URLs
+      /https?:\/\/[^\s]+/g,
     ];
     
     const textToCheck = `${formData.name} ${formData.message} ${formData.company}`;
@@ -117,12 +108,10 @@ const ContactPage = () => {
       }
     });
     
-    // Check honeypot
     if (honeypot.trim() !== "") {
       newErrors.bot = "Bot detected";
     }
-    
-    // Rate limiting check
+
     const now = Date.now();
     const timeSinceLastSubmit = now - lastSubmitTime;
     
@@ -130,8 +119,7 @@ const ContactPage = () => {
       const remainingTime = Math.ceil((RATE_LIMIT_COOLDOWN - timeSinceLastSubmit) / (1000 * 60));
       newErrors.rateLimit = `Too many submissions. Please try again in ${remainingTime} minutes.`;
     }
-    
-    // Check minimum form filling time (bot detection)
+
     const formFillTime = now - formStartTime.current;
     if (formFillTime < MIN_FORM_TIME) {
       newErrors.fastSubmit = "Please take your time to fill the form properly";
@@ -143,7 +131,7 @@ const ContactPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (isSubmitting) return; // Prevent double submission
+    if (isSubmitting) return;
     
     const validationErrors = validate();
     setErrors(validationErrors);
@@ -153,10 +141,8 @@ const ContactPage = () => {
       setSubmitStatus(null);
       
       try {
-        // EmailJS Configuration (You need to set these up in EmailJS dashboard)
         const { serviceId, templateId, publicKey } = emailConfig;
-        
-        // Prepare template parameters
+
         const templateParams = {
           title: 'Got a New Message in Safe Solutions International website',
           from_name: formData.name,
@@ -164,20 +150,16 @@ const ContactPage = () => {
           phone: formData.phone || 'Not provided',
           company: formData.company || 'Not provided',
           message: formData.message,
-          to_email: 'info@safesolutionint.com', // Your email
+          to_email: 'info@safesolutionint.com',
           reply_to: formData.email,
           timestamp: new Date().toLocaleString(),
         };
         
-        // Send email using EmailJS
         await emailjs.send(serviceId, templateId, templateParams, publicKey);
         
-        // Success
         setSubmitStatus('success');
         setSubmitCount(prev => prev + 1);
         setLastSubmitTime(Date.now());
-        
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -187,10 +169,8 @@ const ContactPage = () => {
           terms: false,
         });
         
-        // Reset form start time for next submission
         formStartTime.current = Date.now();
         
-        // Show success message for 5 seconds
         setTimeout(() => setSubmitStatus(null), 5000);
         
       } catch (error) {
