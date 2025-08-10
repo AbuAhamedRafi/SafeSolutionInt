@@ -5,14 +5,15 @@ import Hero from "./Hero";
 import ServicesSection from "./ServicesSection";
 import SEO from "../../components/SEO";
 import StructuredData from "../../components/StructuredData";
+import FAQ from "../../components/FAQ";
 
 const HomePage = () => {
   return (
     <div>
       <SEO 
-        title="Safe Solution International - Complete Business Solutions & Consultancy"
-        description="Safe Solution International offers comprehensive business solutions including startup consultancy, IT infrastructure, government tender support, transportation services, and project management. Your trusted partner for business growth in Bangladesh with 100+ successful projects and 200+ satisfied clients."
-        keywords="business solutions Bangladesh, startup consultancy, IT infrastructure, government tenders, transportation services, project management, business setup Bangladesh, Safe Solution International, construction services, logistics Bangladesh"
+        title="Safe Solution International - Leading Business Consultancy & Solutions in Bangladesh"
+        description="Safe Solution International is Bangladesh's premier business consultancy firm offering comprehensive solutions including startup consultancy, IT infrastructure, government tender support, transportation services, construction, and project management. Trusted by 200+ clients with 100+ successful projects across Dhaka and Bangladesh. Expert business solutions for startups, SMEs, and enterprises."
+        keywords="Safe Solution International, Safe Solution International Bangladesh, business consultancy Bangladesh, business solutions Dhaka, startup consultancy Bangladesh, IT infrastructure services Bangladesh, government tender support Dhaka, transportation services Bangladesh, construction services Dhaka, project management Bangladesh, business setup Bangladesh, commercial solutions Bangladesh, logistics services Dhaka, business consulting firm Bangladesh"
         url="/"
         type="website"
       />
@@ -24,6 +25,7 @@ const HomePage = () => {
       <ServicesSection />
       <ExpertiseSection />
       <About />
+      <FAQ />
       <Contact />
     </div>
   );

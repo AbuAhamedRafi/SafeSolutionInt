@@ -8,6 +8,11 @@ import {
   FaPalette,
   FaCalendarAlt,
   FaPlane,
+  FaBuilding,
+  FaShieldAlt,
+  FaSeedling,
+  FaCar,
+  FaTools,
   FaArrowRight,
   FaCheckCircle,
   FaQuoteLeft,
@@ -15,7 +20,6 @@ import {
   FaAward,
   FaPhone,
   FaEnvelope,
-  FaShieldAlt,
   FaLightbulb,
   FaHandshake,
   FaClock,
@@ -23,13 +27,15 @@ import {
   FaChartLine
 } from "react-icons/fa";
 import SectionTitle from "../../components/SectionTitle";
+import SEO from "../../components/SEO";
 
 const servicesData = [
   {
     id: 1,
     title: "Startup Consultancy",
     description: "From business planning to legal entity registration, we help lay a solid foundation for your venture. Our comprehensive startup consultancy services include market research, business model development, financial planning, legal compliance, and strategic guidance to help entrepreneurs turn their ideas into successful businesses.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=60",
+    image: "https://img.freepik.com/free-photo/business-people-meeting-conference-room_23-2148898874.jpg?w=800",
+    fallbackImage: "https://via.placeholder.com/800x400/ef4444/ffffff?text=Startup+Consultancy",
     icon: <FaRocket />,
     category: "Business Development",
     features: [
@@ -84,7 +90,7 @@ const servicesData = [
   {
     id: 3,
     title: "Transportation & Logistics",
-    description: "We manage all your startup's logistical needs including warehousing, last-mile delivery, and fleet solutions. Our comprehensive logistics services ensure efficient supply chain management, cost-effective transportation, and reliable delivery systems.",
+    description: "We manage all your startup's logistical needs including warehousing, last-mile delivery, fleet solutions, and escort services. Our comprehensive logistics services ensure efficient supply chain management, cost-effective transportation, reliable delivery systems, and secure transport solutions.",
     image: "https://images.unsplash.com/photo-1585128792020-8f42b17a7d62?auto=format&fit=crop&w=800&q=60",
     icon: <FaTruck />,
     category: "Logistics Management",
@@ -94,7 +100,8 @@ const servicesData = [
       "Fleet Management",
       "Supply Chain Optimization",
       "Inventory Management",
-      "Real-time Tracking"
+      "Real-time Tracking",
+      "Professional Escort Services"
     ],
     benefits: [
       "Cost-effective delivery",
@@ -248,6 +255,146 @@ const servicesData = [
       { step: "Itinerary Creation", description: "Detailed travel plans and documentation" },
       { step: "Travel Support", description: "24/7 assistance during travel" }
     ]
+  },
+  {
+    id: 9,
+    title: "Construction & Real Estate",
+    description: "Comprehensive construction and real estate services including project management, property development, and investment consultancy. We provide end-to-end solutions for residential, commercial, and industrial construction projects with a focus on quality, sustainability, and innovation.",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=60",
+    icon: <FaBuilding />,
+    category: "Construction & Real Estate",
+    features: [
+      "Construction Project Management",
+      "Property Development",
+      "Real Estate Investment Consulting",
+      "Architecture & Design Services",
+      "Quality Control & Inspection",
+      "Regulatory Compliance & Permits"
+    ],
+    benefits: [
+      "Quality construction",
+      "Timely project delivery",
+      "Cost-effective solutions",
+      "Regulatory compliance"
+    ],
+    process: [
+      { step: "Project Planning", description: "Comprehensive planning and design development" },
+      { step: "Permit & Approval", description: "Regulatory compliance and permit acquisition" },
+      { step: "Construction Management", description: "Professional project execution and quality control" },
+      { step: "Handover & Support", description: "Final inspection and ongoing maintenance support" }
+    ]
+  },
+  {
+    id: 10,
+    title: "Safety & Security Solutions",
+    description: "Advanced safety and security services including fire safety systems, detection solutions, and emergency response planning. Our comprehensive security solutions protect your assets, personnel, and operations with state-of-the-art technology and expert consultation.",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=60",
+    icon: <FaShieldAlt />,
+    category: "Safety & Security",
+    features: [
+      "Fire Safety System Design & Installation",
+      "Fire Detection & Alarm Systems",
+      "Emergency Response Planning",
+      "Security System Integration",
+      "Safety Training & Compliance",
+      "Risk Assessment & Mitigation"
+    ],
+    benefits: [
+      "Enhanced safety",
+      "Emergency preparedness",
+      "Regulatory compliance",
+      "Asset protection"
+    ],
+    process: [
+      { step: "Safety Assessment", description: "Comprehensive risk analysis and safety evaluation" },
+      { step: "System Design", description: "Custom safety and security system planning" },
+      { step: "Installation & Testing", description: "Professional installation and system commissioning" },
+      { step: "Training & Maintenance", description: "Staff training and ongoing system maintenance" }
+    ]
+  },
+  {
+    id: 11,
+    title: "Renewable Energy & Waste Management",
+    description: "Sustainable energy solutions including solar installations, waste management systems, and environmental consultancy services. We help businesses transition to clean energy and implement effective waste management strategies for a sustainable future.",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=60",
+    icon: <FaSeedling />,
+    category: "Environmental Solutions",
+    features: [
+      "Solar Energy System Design & Installation",
+      "Waste Management Solutions",
+      "Environmental Impact Assessment",
+      "Energy Efficiency Consulting",
+      "Recycling Program Development",
+      "Sustainability Reporting"
+    ],
+    benefits: [
+      "Reduced energy costs",
+      "Environmental compliance",
+      "Sustainable operations",
+      "Carbon footprint reduction"
+    ],
+    process: [
+      { step: "Environmental Assessment", description: "Energy audit and waste analysis" },
+      { step: "Solution Design", description: "Custom renewable energy and waste management planning" },
+      { step: "Implementation", description: "Professional installation and system deployment" },
+      { step: "Monitoring & Optimization", description: "Performance tracking and continuous improvement" }
+    ]
+  },
+  {
+    id: 12,
+    title: "Transportation & Escort Services",
+    description: "Enhanced transportation services including logistics, fleet management, and professional escort services for secure transport. We provide comprehensive transportation solutions with a focus on safety, reliability, and professional service delivery.",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=60",
+    icon: <FaCar />,
+    category: "Transportation Services",
+    features: [
+      "Professional Fleet Management",
+      "Secure Transport Services",
+      "Executive Escort Services",
+      "Route Planning & Optimization",
+      "Vehicle Maintenance & Safety",
+      "24/7 Transportation Support"
+    ],
+    benefits: [
+      "Secure transportation",
+      "Professional service",
+      "Reliable scheduling",
+      "Safety compliance"
+    ],
+    process: [
+      { step: "Transport Planning", description: "Route analysis and security assessment" },
+      { step: "Vehicle Assignment", description: "Professional driver and vehicle selection" },
+      { step: "Service Execution", description: "Safe and professional transport delivery" },
+      { step: "Performance Review", description: "Service evaluation and continuous improvement" }
+    ]
+  },
+  {
+    id: 13,
+    title: "Facilities & Maintenance Services",
+    description: "Complete facility management and maintenance solutions including building maintenance, cleaning services, and equipment management. We ensure your facilities operate efficiently with comprehensive maintenance programs and professional facility management.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=60",
+    icon: <FaTools />,
+    category: "Facility Management",
+    features: [
+      "Building Maintenance & Repairs",
+      "Professional Cleaning Services",
+      "Equipment Management & Servicing",
+      "Preventive Maintenance Programs",
+      "Emergency Response Services",
+      "Facility Optimization Consulting"
+    ],
+    benefits: [
+      "Reduced operational costs",
+      "Extended equipment life",
+      "Improved facility efficiency",
+      "Professional maintenance"
+    ],
+    process: [
+      { step: "Facility Assessment", description: "Comprehensive facility and equipment evaluation" },
+      { step: "Maintenance Planning", description: "Custom maintenance program development" },
+      { step: "Service Implementation", description: "Professional maintenance and cleaning services" },
+      { step: "Performance Monitoring", description: "Ongoing evaluation and service optimization" }
+    ]
   }
 ];
 
@@ -259,6 +406,14 @@ const ServiceDetails = () => {
 
   return (
     <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
+      <SEO 
+        title={`${service.title} - Safe Solution International | Professional ${service.category} Services in Bangladesh`}
+        description={`${service.description} Safe Solution International provides expert ${service.title.toLowerCase()} services in Bangladesh with professional quality and reliable results.`}
+        keywords={`${service.title}, ${service.title} Bangladesh, ${service.category} services, Safe Solution International ${service.title.toLowerCase()}, professional ${service.title.toLowerCase()} Bangladesh, ${service.features?.join(', ')}`}
+        url={`/service_details/${service.id}`}
+        type="service"
+      />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-20 blur-3xl animate-pulse"></div>
@@ -320,6 +475,12 @@ const ServiceDetails = () => {
                     src={service.image}
                     alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    onError={(e) => {
+                      if (service.fallbackImage && e.target.src !== service.fallbackImage) {
+                        e.target.src = service.fallbackImage;
+                      }
+                    }}
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                   

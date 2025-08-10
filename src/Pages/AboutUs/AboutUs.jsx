@@ -6,9 +6,9 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <SEO 
-        title="About Safe Solution International - Leading Business Consultancy in Bangladesh"
-        description="Learn about Safe Solution International, a leading business consultancy firm in Bangladesh. We provide comprehensive solutions including startup support, IT infrastructure, government tender assistance, and project management services with 3+ years of experience."
-        keywords="about Safe Solution International, business consultancy Bangladesh, company profile, startup support Bangladesh, IT services company, project management firm, government tender support"
+        title="About Safe Solution International - Premier Business Consultancy Firm in Bangladesh"
+        description="Safe Solution International is Bangladesh's trusted business consultancy firm established with a mission to empower businesses through comprehensive solutions. Specializing in startup consultancy, IT infrastructure, government tender support, transportation services, and project management. With 3+ years of experience, 200+ satisfied clients, and 100+ successful projects across Bangladesh."
+        keywords="About Safe Solution International, Safe Solution International Bangladesh, business consultancy firm Bangladesh, company profile Safe Solution International, startup support Bangladesh, IT services company Bangladesh, project management firm Dhaka, government tender support Bangladesh, business solutions company Bangladesh"
         url="/about"
         type="website"
       />

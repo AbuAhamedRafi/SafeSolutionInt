@@ -18,8 +18,8 @@ const Projects = () => {
         title: "Enterprise Work Management System",
         description:
           "Complete digital transformation solution for enterprise project management with real-time collaboration tools and advanced analytics.",
-        image:
-          "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=60",
+        image: "https://img.freepik.com/free-photo/business-team-working-project-management_23-2149329572.jpg?w=800",
+        fallbackImage: "https://via.placeholder.com/800x400/1e40af/ffffff?text=Enterprise+Management",
         category: "Software Development",
         client: "Tech Solutions Inc.",
         duration: "6 months",
@@ -32,8 +32,8 @@ const Projects = () => {
         title: "Modern Office Complex",
         description:
           "Comprehensive renovation of a 50,000 sq ft office building with sustainable design and smart building technologies.",
-        image:
-          "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=60",
+        image: "https://img.freepik.com/free-photo/modern-office-building-architecture_23-2149329543.jpg?w=800",
+        fallbackImage: "https://via.placeholder.com/800x400/059669/ffffff?text=Office+Complex",
         category: "Construction",
         client: "Corporate Holdings",
         duration: "12 months",
@@ -46,8 +46,8 @@ const Projects = () => {
         title: "Smart Infrastructure Solutions",
         description:
           "Implementation of IoT-based infrastructure monitoring system for municipal water and waste management.",
-        image:
-          "https://images.unsplash.com/photo-1581093458791-9d42e72b9353?auto=format&fit=crop&w=800&q=60",
+        image: "https://img.freepik.com/free-photo/smart-city-infrastructure-technology_23-2149204847.jpg?w=800",
+        fallbackImage: "https://via.placeholder.com/800x400/7c3aed/ffffff?text=Smart+Infrastructure",
         category: "Infrastructure",
         client: "City Municipality",
         duration: "8 months",
@@ -60,8 +60,8 @@ const Projects = () => {
         title: "Manufacturing Automation",
         description:
           "Complete automation solution for manufacturing processes with AI-powered quality control and predictive maintenance.",
-        image:
-          "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=60",
+        image: "https://img.freepik.com/free-photo/industrial-automation-factory_23-2149329551.jpg?w=800",
+        fallbackImage: "https://via.placeholder.com/800x400/dc2626/ffffff?text=Manufacturing+Automation",
         category: "Automation",
         client: "Industrial Corp",
         duration: "10 months",
@@ -74,8 +74,8 @@ const Projects = () => {
         title: "E-commerce Platform Development",
         description:
           "Custom e-commerce solution with advanced analytics, multi-vendor support, and mobile-first design approach.",
-        image:
-          "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=60",
+        image: "https://img.freepik.com/free-photo/online-shopping-ecommerce-website_23-2149329567.jpg?w=800",
+        fallbackImage: "https://via.placeholder.com/800x400/ea580c/ffffff?text=E-commerce+Platform",
         category: "E-commerce",
         client: "Retail Group",
         duration: "4 months",
@@ -88,8 +88,8 @@ const Projects = () => {
         title: "Corporate Branding Campaign",
         description:
           "Complete brand identity redesign and digital marketing campaign resulting in 300% increase in brand recognition.",
-        image:
-          "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=60",
+        image: "https://img.freepik.com/free-photo/branding-marketing-design-concept_23-2149329584.jpg?w=800",
+        fallbackImage: "https://via.placeholder.com/800x400/8b5cf6/ffffff?text=Corporate+Branding",
         category: "Branding",
         client: "StartUp Ventures",
         duration: "3 months",
@@ -235,6 +235,12 @@ const Projects = () => {
                         src={project.image}
                         alt={project.title}
                         className="w-full h-64 object-cover"
+                        onError={(e) => {
+                          if (project.fallbackImage && e.target.src !== project.fallbackImage) {
+                            e.target.src = project.fallbackImage;
+                          }
+                        }}
+                        loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       

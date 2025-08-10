@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
 import ScrollToTop from "../components/ScrollToTop";
@@ -10,7 +10,7 @@ const Main = () => {
       <PerformanceOptimizer />
       <ScrollToTop />
       <Navbar />
-      <div className="min-h-screen md:mt-28 mt-16">
+      <div className="min-h-screen">
         <Outlet />
       </div>
       <Footer />

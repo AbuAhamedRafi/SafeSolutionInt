@@ -6,7 +6,12 @@ import {
   RiTeamLine, 
   RiBrushLine, 
   RiCalendarEventLine, 
-  RiPlaneLine 
+  RiPlaneLine,
+  RiBuilding4Line,
+  RiShieldCheckLine,
+  RiPlantLine,
+  RiCarLine,
+  RiToolsLine
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaCheckCircle} from "react-icons/fa";
@@ -41,12 +46,12 @@ const Services = () => {
       id: 3,
       title: "Transportation & Logistics",
       description:
-        "We manage all your startup's logistical needs including warehousing, last-mile delivery, and fleet solutions.",
+        "We manage all your startup's logistical needs including warehousing, last-mile delivery, fleet solutions, and escort services.",
       image:
         "https://images.unsplash.com/photo-1585128792020-8f42b17a7d62?auto=format&fit=crop&w=800&q=60",
       icon: <RiTruckLine />,
       category: "Logistics",
-      features: ["Warehousing", "Last-mile Delivery", "Fleet Management"]
+      features: ["Warehousing", "Last-mile Delivery", "Fleet Management", "Escort Services"]
     },
     {
       id: 4,
@@ -103,14 +108,69 @@ const Services = () => {
       category: "Travel",
       features: ["Air Ticketing", "Hotel Bookings", "Travel Planning"]
     },
+    {
+      id: 9,
+      title: "Construction & Real Estate",
+      description:
+        "Comprehensive construction and real estate services including project management, property development, and investment consultancy.",
+      image:
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=60",
+      icon: <RiBuilding4Line />,
+      category: "Construction",
+      features: ["Project Management", "Property Development", "Investment Consultancy"]
+    },
+    {
+      id: 10,
+      title: "Safety & Security Solutions",
+      description:
+        "Advanced safety and security services including fire safety systems, detection solutions, and emergency response planning.",
+      image:
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=60",
+      icon: <RiShieldCheckLine />,
+      category: "Security",
+      features: ["Fire Safety Systems", "Detection Solutions", "Emergency Planning"]
+    },
+    {
+      id: 11,
+      title: "Renewable Energy & Waste Management",
+      description:
+        "Sustainable energy solutions including solar installations, waste management systems, and environmental consultancy services.",
+      image:
+        "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=60",
+      icon: <RiPlantLine />,
+      category: "Environment",
+      features: ["Solar Energy Systems", "Waste Management", "Environmental Consulting"]
+    },
+    {
+      id: 12,
+      title: "Transportation & Escort Services",
+      description:
+        "Enhanced transportation services including logistics, fleet management, and professional escort services for secure transport.",
+      image:
+        "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=60",
+      icon: <RiCarLine />,
+      category: "Transport",
+      features: ["Fleet Management", "Secure Transport", "Escort Services"]
+    },
+    {
+      id: 13,
+      title: "Facilities & Maintenance Services",
+      description:
+        "Complete facility management and maintenance solutions including building maintenance, cleaning services, and equipment management.",
+      image:
+        "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=60",
+      icon: <RiToolsLine />,
+      category: "Maintenance",
+      features: ["Building Maintenance", "Cleaning Services", "Equipment Management"]
+    },
   ];
 
   return (
     <div className="relative bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen">
       <SEO 
-        title="Our Services - Safe Solution International | Business Consultancy & IT Solutions"
-        description="Explore our comprehensive business services including startup consultancy, IT infrastructure, government tender support, transportation & logistics, project management, and digital marketing solutions in Bangladesh."
-        keywords="business services Bangladesh, startup consultancy, IT infrastructure services, government tender support, transportation logistics, project management, digital marketing, event management, Safe Solution International services"
+        title="Business Services - Safe Solution International | Complete Solutions in Bangladesh"
+        description="Explore Safe Solution International's comprehensive business services in Bangladesh: startup consultancy, IT infrastructure, government tender support, transportation & logistics, construction, HR recruitment, branding, event management, and more. Professional solutions tailored for Bangladesh businesses."
+        keywords="Safe Solution International services, business services Bangladesh, startup consultancy services, IT infrastructure Bangladesh, government tender assistance, transportation logistics Bangladesh, construction services Dhaka, HR recruitment Bangladesh, business solutions Dhaka, commercial services Bangladesh"
         url="/service"
         type="website"
       />

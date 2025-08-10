@@ -11,61 +11,97 @@ const services = [
     id: 1,
     title: "Startup Consultancy",
     desc: "From business planning to legal entity registration, we help lay a solid foundation for your venture.",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=60",
+    image: "https://dummyimage.com/800x400/ef4444/ffffff.png&text=Startup+Consultancy",
+    fallbackImage: "https://via.placeholder.com/800x400/ef4444/ffffff?text=Startup+Consultancy",
   },
   {
     id: 2,
     title: "IT Infrastructure & Support",
     desc: "We provide full-scale IT services—from networking and cybersecurity to cloud-based systems and daily support.",
-    image:
-      "https://images.unsplash.com/photo-1518709268805-4e9042af2176?auto=format&fit=crop&w=800&q=60",
+    image: "https://dummyimage.com/800x400/1e40af/ffffff.png&text=IT+Infrastructure",
+    fallbackImage: "https://via.placeholder.com/800x400/1e40af/ffffff?text=IT+Infrastructure",
   },
   {
     id: 3,
     title: "Transportation & Logistics",
-    desc: "We manage all your startup's logistical needs including warehousing, last-mile delivery, and fleet solutions.",
-    image:
-      "https://images.unsplash.com/photo-1585128792020-8f42b17a7d62?auto=format&fit=crop&w=800&q=60",
+    desc: "We manage all your startup's logistical needs including warehousing, last-mile delivery, fleet solutions, and escort services.",
+    image: "https://dummyimage.com/800x400/059669/ffffff.png&text=Transportation",
+    fallbackImage: "https://via.placeholder.com/800x400/059669/ffffff?text=Transportation",
   },
   {
     id: 4,
     title: "Government Tender Assistance",
     desc: "We guide you through documentation, bidding, and compliance to win government projects with confidence.",
-    image:
-      "https://images.unsplash.com/photo-1627471428132-76f7f96f4c6e?auto=format&fit=crop&w=800&q=60",
+    image: "https://dummyimage.com/800x400/7c3aed/ffffff.png&text=Government+Tender",
+    fallbackImage: "https://via.placeholder.com/800x400/7c3aed/ffffff?text=Government+Tender",
   },
   {
     id: 5,
     title: "HR & Recruitment Services",
     desc: "We help you hire, onboard, and manage the best talent with scalable HR solutions tailored to startups.",
-    image:
-      "https://images.unsplash.com/photo-1581090700227-4c4cce0631f0?auto=format&fit=crop&w=800&q=60",
+    image: "https://dummyimage.com/800x400/dc2626/ffffff.png&text=HR+Services",
+    fallbackImage: "https://via.placeholder.com/800x400/dc2626/ffffff?text=HR+Services",
   },
   {
     id: 6,
     title: "Branding & Identity",
     desc: "From logo design to complete brand strategy, we craft a compelling identity that reflects your mission.",
-    image:
-      "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=60",
+    image: "https://dummyimage.com/800x400/ea580c/ffffff.png&text=Branding+Design",
+    fallbackImage: "https://via.placeholder.com/800x400/ea580c/ffffff?text=Branding+Design",
   },
   {
     id: 7,
     title: "Event Management",
     desc: "Professional event planning and management services to make your corporate events memorable and successful.",
-    image:
-      "https://images.unsplash.com/photo-1556742031-c6961e8560b0?auto=format&fit=crop&w=800&q=60",
+    image: "https://dummyimage.com/800x400/8b5cf6/ffffff.png&text=Event+Management",
+    fallbackImage: "https://via.placeholder.com/800x400/8b5cf6/ffffff?text=Event+Management",
   },
   {
     id: 8,
     title: "Air Ticketing & Travel Services",
     desc: "Complete travel solutions including air ticketing, hotel bookings, and travel planning for business trips.",
-    image:
-      "https://images.unsplash.com/photo-1588776814546-ec7f4a08f1ba?auto=format&fit=crop&w=800&q=60",
+    image: "https://dummyimage.com/800x400/0ea5e9/ffffff.png&text=Travel+Services",
+    fallbackImage: "https://via.placeholder.com/800x400/0ea5e9/ffffff?text=Travel+Services",
+  },
+  {
+    id: 9,
+    title: "Construction & Real Estate",
+    desc: "Comprehensive construction and real estate services including project management and property development.",
+    image: "https://dummyimage.com/800x400/f59e0b/ffffff.png&text=Construction",
+    fallbackImage: "https://via.placeholder.com/800x400/f59e0b/ffffff?text=Construction",
+  },
+  {
+    id: 10,
+    title: "Safety & Security Solutions",
+    desc: "Advanced safety and security services including fire safety systems and detection solutions.",
+    image: "https://dummyimage.com/800x400/ef4444/ffffff.png&text=Security+Solutions",
+    fallbackImage: "https://via.placeholder.com/800x400/ef4444/ffffff?text=Security+Solutions",
+  },
+  {
+    id: 11,
+    title: "Renewable Energy & Waste Management",
+    desc: "Sustainable energy solutions including solar installations and waste management systems.",
+    image: "https://dummyimage.com/800x400/10b981/ffffff.png&text=Renewable+Energy",
+    fallbackImage: "https://via.placeholder.com/800x400/10b981/ffffff?text=Renewable+Energy",
+  },
+  {
+    id: 12,
+    title: "Transportation & Escort Services",
+    desc: "Enhanced transportation services including logistics and professional escort services.",
+    image: "https://dummyimage.com/800x400/6366f1/ffffff.png&text=Transportation",
+    fallbackImage: "https://via.placeholder.com/800x400/6366f1/ffffff?text=Transportation",
+  },
+  {
+    id: 13,
+    title: "Facilities & Maintenance Services",
+    desc: "Complete facility management and maintenance solutions for optimal operational efficiency.",
+    image: "https://dummyimage.com/800x400/84cc16/ffffff.png&text=Facilities+Maintenance",
+    fallbackImage: "https://via.placeholder.com/800x400/84cc16/ffffff?text=Facilities+Maintenance",
   },
 ];
 
 export default function ServicesSection() {
+
   const customStyles = `
     .services-swiper {
       padding: 0 3.75rem 1.25rem 3.75rem;
@@ -245,6 +281,14 @@ export default function ServicesSection() {
                       src={service.image}
                       alt={service.title}
                       className="rounded-lg h-40 w-full object-cover"
+                      onError={(e) => {
+                        console.log('Image failed to load:', service.image);
+                        if (service.fallbackImage && e.target.src !== service.fallbackImage) {
+                          console.log('Switching to fallback:', service.fallbackImage);
+                          e.target.src = service.fallbackImage;
+                        }
+                      }}
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
                   </div>

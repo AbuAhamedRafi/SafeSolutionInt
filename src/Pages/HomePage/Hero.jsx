@@ -6,7 +6,7 @@ import {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-28">
       {/* Background Image with Enhanced Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
@@ -41,13 +41,12 @@ const Hero = () => {
 
             {/* Subtitle */}
             <p className="text-lg xs:text-xl sm:text-2xl text-gray-200 font-light leading-relaxed max-w-2xl">
-              Your one-stop solution for establishing and growing your business.
-              From transportation and IT support to government tenders, we
-              provide{" "}
+              Bangladesh&apos;s leading business consultancy firm providing comprehensive solutions for startups, SMEs, and enterprises.
+              From startup consultancy and IT infrastructure to government tenders and construction services, we deliver{" "}
               <span className="text-red-400 font-semibold">
-                end-to-end services
+                professional business solutions
               </span>{" "}
-              to help startups and companies succeed.
+              to help your business thrive and succeed across Bangladesh.
             </p>
 
             {/* Key Points */}
