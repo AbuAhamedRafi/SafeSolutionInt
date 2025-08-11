@@ -393,7 +393,7 @@ const ContactPage = () => {
               {
                 icon: FaPhone,
                 title: "Call Us",
-                info: "+880 1713-275781",
+                info: "+880 1675884842",
                 description: "Sun-Thu 9am-6pm",
                 color: "from-blue-500 to-purple-600",
                 action: "tel:+880 1675884842"

@@ -9,12 +9,16 @@
     "build:seo": "npm run validate:seo && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "validate:seo": "node scripts/validate-seo.js"
+    "validate:seo": "node scripts/validate-seo.js",
+    "deploy": "npm run build && vercel --prod",
+    "deploy:preview": "npm run build && vercel",
+    "deploy:netlify": "npm run build && netlify deploy --prod --dir=dist",
+    "deploy:surge": "npm run build && surge dist",
+    "deploy:github": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.0.8",
-    "@tanstack/react-query": "^5.71.10",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -29,7 +33,6 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
-    "daisyui": "^5.0.13",
     "eslint": "^9.19.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.0",

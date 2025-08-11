@@ -19,11 +19,12 @@ Safe Solution International is a modern, responsive business website built with 
 ## 🛠️ Tech Stack
 
 - **Frontend**: React 19, Vite
-- **Styling**: Tailwind CSS, DaisyUI
+- **Styling**: Tailwind CSS
 - **Icons**: React Icons
 - **Routing**: React Router DOM
 - **Forms**: EmailJS integration
 - **SEO**: Custom SEO component with structured data
+- **UI Components**: Swiper for carousels, SweetAlert2 for notifications
 - **Deployment**: Vercel
 
 ## 📦 Installation
