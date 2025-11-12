@@ -112,5 +112,3 @@ src/
 This project is proprietary and confidential. All rights reserved by Safe Solution International.
 
 ---
-
-**Built with ❤️ by Abu Ahamed Rafi**
