@@ -15,12 +15,19 @@ const productCatalog = {
   "fire-protection-systems": {
     title: "Fire Protection Systems",
     brands: ["World Fire Fighting", "Noah", "Naffco"],
-    products: []
+    products: [
+      { name: "World Fire Fighting Sprinkler", brand: "World Fire Fighting", image: "/images/logo.png" },
+      { name: "Noah Fire Pump System", brand: "Noah", image: "/images/logo.png" },
+      { name: "Naffco Fire Hydrant", brand: "Naffco", image: "/images/logo.png" }
+    ]
   },
   "fire-extinguishers": {
     title: "Fire Extinguishers",
     brands: ["Standard Offerings"],
-    products: []
+    products: [
+      { name: "CO2 Fire Extinguisher 5KG", brand: "Standard Offerings", image: "/images/logo.png" },
+      { name: "Dry Powder Extinguisher 6KG", brand: "Standard Offerings", image: "/images/logo.png" }
+    ]
   },
   "cctv-monitoring": {
     title: "CCTV & Monitoring",
@@ -60,7 +67,18 @@ const productCatalog = {
   "energy-saving-pumps": {
     title: "Energy Saving Pumps",
     brands: ["Purity", "Standard Offerings"],
-    products: []
+    products: [
+      { name: "Purity Integrated Water Pump", brand: "Purity", image: "/images/logo.png" },
+      { name: "High-Efficiency Submersible Pump", brand: "Standard Offerings", image: "/images/logo.png" }
+    ]
+  },
+  "safety-cabinets-modular-systems": {
+    title: "Safety Cabinets & Modular Systems",
+    brands: ["Standard Offerings"],
+    products: [
+      { name: "Explosion-Proof Flammable Storage Cabinet", brand: "Standard Offerings", image: "/images/logo.png" },
+      { name: "Corrosive Liquid Safety Cabinet", brand: "Standard Offerings", image: "/images/logo.png" }
+    ]
   },
   "emergency-lights": {
     title: "Emergency Lights",
@@ -69,23 +87,32 @@ const productCatalog = {
       { name: "CQR Bulkhead Plus", brand: "CQR", image: "/images/logo.png" },
       { name: "CQR Spot Non-Maintained Recessed", brand: "CQR", image: "/images/logo.png" },
       { name: "CQR Escape Square - Surface Mount", brand: "CQR", image: "/images/logo.png" },
-      { name: "CQR Emergency Exit Sign - Blade 5 in 1", brand: "CQR", image: "/images/logo.png" }
+      { name: "CQR Emergency Exit Sign - Blade 5 in 1", brand: "CQR", image: "/images/logo.png" },
+      { name: "Yawe Warning Light System", brand: "Yawe", image: "/images/logo.png" }
     ]
   },
   "health-medical-equipment": {
     title: "Health & Medical Equipment",
     brands: ["Comprehensive Catalog"],
-    products: []
+    products: [
+      { name: "Industrial First Aid Kit", brand: "Comprehensive Catalog", image: "/images/logo.png" },
+      { name: "Automated External Defibrillator (AED)", brand: "Comprehensive Catalog", image: "/images/logo.png" }
+    ]
   },
   "emergency-garments-vests": {
     title: "Emergency Garments & Vests",
     brands: ["Standard Offerings"],
-    products: []
+    products: [
+      { name: "High Visibility Reflective Vest", brand: "Standard Offerings", image: "/images/logo.png" },
+      { name: "Fire Resistant Coverall", brand: "Standard Offerings", image: "/images/logo.png" }
+    ]
   },
   "electric-fences": {
     title: "Electric Fences",
     brands: ["Standard Offerings"],
-    products: []
+    products: [
+      { name: "High Voltage Perimeter Fence Controller", brand: "Standard Offerings", image: "/images/logo.png" }
+    ]
   }
 };
 

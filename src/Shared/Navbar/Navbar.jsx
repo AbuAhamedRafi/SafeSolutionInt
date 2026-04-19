@@ -27,7 +27,7 @@ export default function Navbar() {
     },
     {
       title: "Security & Surveillance",
-      sub: ["CCTV & Monitoring", "Baggage Claim Machines"]
+      sub: ["CCTV & Monitoring", "Access Control Systems", "Baggage Claim Machines", "Electric Fences"]
     },
     {
       title: "Industrial & Facility Equipment",
@@ -40,11 +40,11 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md transition-all duration-300">
       {/* Desktop Header */}
       <div
-        className={`hidden md:flex max-w-7xl mx-auto justify-between items-center py-4 px-6 transition-all duration-700 ${
-          isScrolled ? "h-0 overflow-hidden opacity-0 py-0" : "h-auto opacity-100"
+        className={`hidden md:flex max-w-7xl mx-auto justify-between items-center px-6 transition-all duration-500 overflow-hidden ${
+          isScrolled ? "max-h-0 opacity-0 py-0" : "max-h-32 opacity-100 py-4"
         }`}
       >
         <Link
@@ -117,13 +117,11 @@ export default function Navbar() {
 
       {/* Desktop Navbar */}
       <nav
-        className={`hidden md:flex bg-red-500 transition-all duration-700 relative ${
-          isScrolled
-            ? "fixed top-0 py-4 w-full justify-center"
-            : "relative py-2"
+        className={`hidden md:flex bg-red-500 w-full relative transition-all duration-300 shadow-sm ${
+          isScrolled ? "py-4" : "py-2"
         }`}
       >
-        <div className="w-full mx-auto flex justify-center items-center space-x-8">
+        <div className="max-w-7xl mx-auto w-full flex justify-center items-center space-x-8">
           <Link
             to="/"
             onClick={handleLinkClick}
@@ -140,12 +138,12 @@ export default function Navbar() {
             </button>
             
             {/* Mega-Menu Dropdown Grid */}
-            <div className="absolute left-0 top-full w-full bg-white text-gray-800 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t border-red-400">
+            <div className="absolute left-0 top-full w-full bg-white text-gray-800 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t border-red-500">
               <div className="max-w-7xl mx-auto px-6 py-8">
                  <div className="grid grid-cols-4 gap-8">
                    {catalogCategories.map((cat, idx) => (
                       <div key={idx}>
-                        <h3 className="text-red-500 font-bold mb-3 border-b pb-2 uppercase text-sm">{cat.title}</h3>
+                        <h3 className="text-red-500 font-bold mb-3 border-b border-gray-100 pb-2 uppercase text-sm">{cat.title}</h3>
                         <ul className="space-y-2">
                           {cat.sub.map((subItem, sIdx) => (
                              <li key={sIdx}>
