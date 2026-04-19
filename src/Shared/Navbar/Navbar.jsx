@@ -61,7 +61,7 @@ export default function Navbar() {
             <h1 className="text-lg font-semibold text-gray-900">
               Safe Solutions Int.
             </h1>
-            <p className="text-sm text-gray-500">Industrial Technology & Infrastructure</p>
+            <p className="text-sm text-gray-500">Start Strong, Start Right</p>
           </div>
         </Link>
 
