@@ -16,10 +16,16 @@ const PartnersSection = () => {
   ];
 
   return (
-    <section id="partners" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="partners" className="relative py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-30 blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-30 blur-3xl"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 mb-4 tracking-tight leading-tight">
             Our Global Partners
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
@@ -30,7 +36,7 @@ const PartnersSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* VARITO Block */}
-          <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative overflow-hidden">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-8 shadow-lg border border-gray-100 hover:border-red-200 transition-all duration-300 relative overflow-hidden group hover:-translate-y-1">
             <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-bl-full -z-10"></div>
             <div className="flex items-center gap-4 mb-8 border-b pb-6">
               <h3 className="text-3xl font-black tracking-tighter text-gray-900">VARITO</h3>
@@ -58,7 +64,7 @@ const PartnersSection = () => {
           </div>
 
           {/* CQR Security Block */}
-          <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 relative overflow-hidden">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl md:rounded-3xl p-8 shadow-lg border border-gray-100 hover:border-red-200 transition-all duration-300 relative overflow-hidden group hover:-translate-y-1">
             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full -z-10"></div>
             <div className="flex items-center gap-4 mb-8 border-b pb-6">
               <h3 className="text-3xl font-black tracking-tight text-gray-900">CQR Security</h3>

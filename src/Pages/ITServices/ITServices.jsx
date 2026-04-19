@@ -61,7 +61,12 @@ const ITServices = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 pt-20 overflow-hidden">
+      {/* Global Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-40 right-20 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-30 blur-3xl"></div>
+        <div className="absolute bottom-40 left-20 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-30 blur-3xl"></div>
+      </div>
       <SEO 
         title="Enterprise IT Services | Safe Solutions Int."
         description="Comprehensive IT Solutions by Safe Solutions Int. We provide Data Center setups, Web Development, Cloud Hosting, API Architecture, and Custom Enterprise SaaS."
@@ -70,15 +75,15 @@ const ITServices = () => {
       />
 
       {/* Hero Header */}
-      <section className="bg-white border-b border-gray-200">
+      <section className="relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-block px-3 py-1 bg-blue-50 text-blue-600 font-bold text-xs uppercase tracking-widest rounded-md mb-2">
+              <div className="inline-block px-3 py-1 bg-red-50 text-red-500 font-bold text-xs uppercase tracking-widest rounded-md mb-2">
                 Digital Division
               </div>
-              <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight">
-                Enterprise <span className="text-blue-600">IT Infrastructure</span> & Development
+              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight">
+                Enterprise <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">IT Infrastructure</span> & Development
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
                 We bridge the gap between physical hardware and digital architecture. Safe Solutions Int. delivers scalable, 
@@ -86,7 +91,7 @@ const ITServices = () => {
               </p>
               
               <div className="flex flex-wrap gap-4 pt-4">
-                <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all">
+                <Link to="/contact" className="bg-gradient-to-r from-red-500 to-orange-500 hover:shadow-lg transform hover:-translate-y-1 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition-all duration-300">
                   Request IT Audit
                 </Link>
                 <a href="#services" className="bg-white border-2 border-gray-200 text-gray-700 hover:border-gray-300 font-semibold py-3 px-8 rounded-lg transition-all">
@@ -97,9 +102,9 @@ const ITServices = () => {
             
             {/* Visual Abstract representing Server/Code */}
             <div className="hidden lg:block justify-self-end relative w-full h-[400px]">
-               <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
-               <div className="absolute bottom-10 left-10 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
-               <div className="relative z-10 bg-white border border-gray-100 rounded-2xl shadow-2xl p-8 max-w-md mx-auto transform translate-y-4 translate-x-4">
+               <div className="absolute top-10 right-10 w-72 h-72 bg-red-500/10 rounded-full blur-3xl"></div>
+               <div className="absolute bottom-10 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+               <div className="relative z-10 bg-white/90 backdrop-blur border border-gray-100 rounded-2xl shadow-xl p-8 max-w-md mx-auto transform translate-y-4 translate-x-4">
                   <div className="flex items-center justify-between border-b pb-4 mb-4">
                      <span className="font-mono text-gray-800 font-bold flex items-center gap-2">
                         <FaServer className="text-blue-500" /> core-prod-01
@@ -131,9 +136,9 @@ const ITServices = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
             {services.map((service, idx) => (
-              <div key={idx} className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col h-full`}>
+              <div key={idx} className={`bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-100 hover:border-red-200 group flex flex-col h-full transform hover:-translate-y-1 transition-all duration-300`}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className={`w-14 h-14 ${service.bg} ${service.color} ${service.border} border rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform`}>
                     {service.icon}

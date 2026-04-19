@@ -129,11 +129,19 @@ const CatalogPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-40 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 pt-40 pb-16 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-20 right-10 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-30 blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-30 blur-3xl"></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-10 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{categoryData.title}</h1>
-          <p className="text-lg text-gray-600">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500 mb-4 tracking-tight leading-tight">
+            {categoryData.title}
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Explore our industrial-grade {categoryData.title.toLowerCase()} from authorized partners.
           </p>
         </div>
@@ -152,7 +160,7 @@ const CatalogPage = () => {
         {categoryData.products.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {categoryData.products.map((product, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow border border-gray-100">
+              <div key={idx} className="bg-white/80 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg border border-gray-100 hover:border-red-200 overflow-hidden transition-all duration-300 group hover:-translate-y-1 relative">
                 <div className="h-48 bg-gray-100 flex items-center justify-center border-b p-4 relative">
                   <span className="absolute top-3 right-3 bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded">
                     {product.brand}
@@ -160,8 +168,8 @@ const CatalogPage = () => {
                   <img src={product.image} alt={product.name} className="max-h-full object-contain" />
                 </div>
                 <div className="p-5 text-center">
-                  <h3 className="text-lg font-bold text-gray-800 mb-2 truncate">{product.name}</h3>
-                  <button className="w-full mt-2 bg-gray-900 hover:bg-red-500 text-white font-medium py-2 rounded-lg transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-red-500 transition-colors mb-2 truncate">{product.name}</h3>
+                  <button className="w-full mt-2 bg-gradient-to-r from-red-500 to-orange-500 text-white font-semibold py-2.5 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300">
                     Request Quote
                   </button>
                 </div>

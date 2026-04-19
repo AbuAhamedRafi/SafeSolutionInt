@@ -14,18 +14,22 @@ const AboutUs = () => {
       />
       
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-gray-900 to-slate-800 py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+      <div className="relative pt-40 pb-20 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-10 right-10 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-40 blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full opacity-40 blur-3xl"></div>
+        </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 text-center text-white">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4">
-            <FaUsers className="text-blue-400" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 bg-red-50 px-4 py-2 rounded-full text-sm font-bold text-red-500 mb-4">
+            <FaUsers />
             About Our Company
           </div>
-          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent leading-tight tracking-tight">
             Safe Solution International
           </h1>
-          <p className="text-lg xs:text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg xs:text-xl text-gray-600 max-w-3xl mx-auto">
             Your trusted partner for comprehensive business solutions and startup support
           </p>
         </div>
@@ -75,10 +79,10 @@ const AboutUs = () => {
             </div>
 
             <Link
-              to="/service"
-              className="inline-flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-xl font-semibold transition-colors mt-8"
+              to="/catalog/fire-detection-systems"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-orange-500 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 mt-8"
             >
-              Discover Our Services
+              Discover Our Products
               <FaArrowRight />
             </Link>
           </div>
@@ -159,10 +163,10 @@ const AboutUs = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-pink-600/20"></div>
+        <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl">
+          <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
               Ready to get started?
             </h2>
             <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">

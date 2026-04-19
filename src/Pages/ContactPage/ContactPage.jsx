@@ -194,33 +194,31 @@ const ContactPage = () => {
       />
       
       {/* Hero Section with Featured Form */}
-      <div className="relative bg-gradient-to-r from-slate-900 via-gray-900 to-slate-800 py-12 md:py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-        
+      <div className="relative pt-36 md:pt-40 pb-12 md:pb-20 overflow-hidden">
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "2s" }}></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-red-100 to-orange-100 rounded-full blur-3xl opacity-50"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-100 to-purple-100 rounded-full blur-3xl opacity-50"></div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4">
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
           {/* Header */}
-          <div className="text-center text-white mb-8 md:mb-12">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <FaEnvelope className="text-blue-400" />
+          <div className="text-center mb-8 md:mb-12">
+            <div className="inline-flex items-center gap-2 bg-red-50 text-red-500 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              <FaEnvelope />
               Get In Touch
             </div>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent leading-tight tracking-tight">
               Let&apos;s Start Your Project
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Ready to transform your business? Fill out the form below and we&apos;ll get back to you within 24 hours.
             </p>
           </div>
 
           {/* Featured Contact Form */}
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-2xl border border-white/20">
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-6 md:p-10 shadow-xl border border-gray-100 hover:border-red-200 transition-colors">
               <div className="text-center mb-6 md:mb-8">
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Send us a Message</h2>
                 <p className="text-gray-600 text-sm md:text-base">
@@ -354,7 +352,7 @@ const ContactPage = () => {
                     className={`w-full px-8 py-5 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center gap-3 shadow-lg ${
                       isSubmitting 
                         ? 'bg-gray-400 cursor-not-allowed' 
-                        : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white hover:shadow-xl transform hover:scale-105'
+                        : 'bg-gradient-to-r from-red-500 to-orange-500 text-white hover:shadow-xl transform hover:-translate-y-1'
                     }`}
                   >
                     {isSubmitting ? (
@@ -418,7 +416,7 @@ const ContactPage = () => {
               <a
                 key={index}
                 href={contact.action}
-                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 text-center block hover:transform hover:scale-105"
+                className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-xl hover:border-red-200 border border-gray-100 text-center block hover:transform hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
               >
                 <div className={`w-16 h-16 bg-gradient-to-r ${contact.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <contact.icon className="text-2xl text-white" />
