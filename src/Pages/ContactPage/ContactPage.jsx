@@ -144,13 +144,13 @@ const ContactPage = () => {
         const { serviceId, templateId, publicKey } = emailConfig;
 
         const templateParams = {
-          title: 'Got a New Message in Safe Solutions International website',
+          title: 'Got a New Message in Safe Solutions Int. website',
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone || 'Not provided',
           company: formData.company || 'Not provided',
           message: formData.message,
-          to_email: 'info@safesolutionint.com',
+          to_email: 'info@safesolutionsint.com',
           reply_to: formData.email,
           timestamp: new Date().toLocaleString(),
         };
@@ -186,9 +186,9 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
       <SEO 
-        title="Contact Us - Safe Solution International | Get in Touch"
-        description="Contact Safe Solution International for your business needs. Get professional consultancy, IT solutions, and project management services. Reach out to us for startup support and government tender assistance in Bangladesh."
-        keywords="contact Safe Solution International, business consultancy contact, IT solutions inquiry, project management contact, startup support Bangladesh, government tender assistance contact"
+        title="Contact Us - Safe Solutions Int. | Get in Touch"
+        description="Contact Safe Solutions Int. for your industrial safety, security hardware, and enterprise IT infrastructure needs."
+        keywords="contact Safe Solutions Int., security hardware contact, IT solutions inquiry, fire safety quote"
         url="/contact"
         type="website"
       />
@@ -401,10 +401,10 @@ const ContactPage = () => {
               {
                 icon: FaEnvelope,
                 title: "Email Us",
-                info: "info@safesolutionint.com",
+                info: "info@safesolutionsint.com",
                 description: "24/7 Support",
                 color: "from-green-500 to-teal-600",
-                action: "mailto:info@safesolutionint.com"
+                action: "mailto:info@safesolutionsint.com"
               },
               {
                 icon: FaMapMarkerAlt,

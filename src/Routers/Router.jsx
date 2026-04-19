@@ -9,6 +9,8 @@ import Blog from "../Pages/Blog/Blog";
 import BlogDetails from "../Pages/Blog/BlogDetails";
 import ContactPage from "../Pages/ContactPage/ContactPage";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import CatalogPage from "../Pages/Catalog/CatalogPage";
+import ITServices from "../Pages/ITServices/ITServices";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/catalog/:category",
+        element: <CatalogPage />,
+      },
+      {
+        path: "/it-services",
+        element: <ITServices />,
       },
     ],
   },

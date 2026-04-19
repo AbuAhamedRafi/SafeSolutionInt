@@ -1,8 +1,9 @@
 import About from "./About";
 import Contact from "./Contact";
-import ExpertiseSection from "./ExpertiseSection";
 import Hero from "./Hero";
-import ServicesSection from "./ServicesSection";
+import TrustBanner from "./TrustBanner";
+import QuickAccessGrid from "./QuickAccessGrid";
+import PartnersSection from "./PartnersSection";
 import SEO from "../../components/SEO";
 import StructuredData from "../../components/StructuredData";
 import FAQ from "../../components/FAQ";
@@ -11,9 +12,9 @@ const HomePage = () => {
   return (
     <div>
       <SEO 
-        title="Safe Solution International - Leading Business Consultancy & Solutions in Bangladesh"
-        description="Safe Solution International is Bangladesh's premier business consultancy firm offering comprehensive solutions including startup consultancy, IT infrastructure, government tender support, transportation services, construction, and project management. Trusted by 200+ clients with 100+ successful projects across Dhaka and Bangladesh. Expert business solutions for startups, SMEs, and enterprises."
-        keywords="Safe Solution International, Safe Solution International Bangladesh, business consultancy Bangladesh, business solutions Dhaka, startup consultancy Bangladesh, IT infrastructure services Bangladesh, government tender support Dhaka, transportation services Bangladesh, construction services Dhaka, project management Bangladesh, business setup Bangladesh, commercial solutions Bangladesh, logistics services Dhaka, business consulting firm Bangladesh"
+        title="Safe Solutions Int. - IT Infrastructure & Security Hardware"
+        description="Safe Solutions Int. is Bangladesh's premier engineering and technology partner, specializing in Fire Safety, Security & Surveillance hardware, and Enterprise IT Infrastructure. Authorized partners of VARITO, CQR Security, and BOSCH."
+        keywords="Safe Solutions Int., VARITO Bangladesh, CQR Security, fire safety equipment, IT infrastructure services, surveillance systems, energy saving pumps, enterprise SaaS Bangladesh"
         url="/"
         type="website"
       />
@@ -22,8 +23,9 @@ const HomePage = () => {
       <StructuredData type="website" />
       
       <Hero />
-      <ServicesSection />
-      <ExpertiseSection />
+      <TrustBanner />
+      <QuickAccessGrid />
+      <PartnersSection />
       <About />
       <FAQ />
       <Contact />

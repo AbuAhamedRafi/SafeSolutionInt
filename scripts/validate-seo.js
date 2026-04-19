@@ -1,11 +1,8 @@
 // SEO Build Validation Script
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import process from 'process';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const validateSEO = () => {
   console.log('🔍 Running SEO validation...\n');
@@ -38,7 +35,7 @@ const validateSEO = () => {
     if (!robotsContent.includes('User-agent:')) {
       errors.push('robots.txt should include User-agent directive');
     }
-  } catch (e) {
+  } catch {
     errors.push('Could not read robots.txt file');
   }
   
@@ -50,7 +47,7 @@ const validateSEO = () => {
     }
     const urlCount = (sitemapContent.match(/<url>/g) || []).length;
     console.log(`📄 Sitemap contains ${urlCount} URLs`);
-  } catch (e) {
+  } catch {
     errors.push('Could not read sitemap.xml file');
   }
   
@@ -70,7 +67,7 @@ const validateSEO = () => {
       warnings.push('manifest.json should include icons');
     }
     
-  } catch (e) {
+  } catch {
     errors.push('Could not read or parse manifest.json file');
   }
   
@@ -100,14 +97,14 @@ const validateSEO = () => {
       errors.push('Multiple <title> tags found in index.html');
     }
     
-  } catch (e) {
+  } catch {
     errors.push('Could not read index.html file');
   }
   
   // Check package.json for SEO-related dependencies
   try {
     const packageContent = fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8');
-    const packageJson = JSON.parse(packageContent);
+    JSON.parse(packageContent); // Ensure it's valid JSON
     
     // Check if we have SEO components
     const seoFiles = [
@@ -126,7 +123,7 @@ const validateSEO = () => {
       warnings.push('Missing SEO components for dynamic meta tag management');
     }
     
-  } catch (e) {
+  } catch {
     warnings.push('Could not read package.json file');
   }
   
