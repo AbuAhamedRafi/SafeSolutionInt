@@ -1,8 +1,7 @@
 import About from "./About";
 import Contact from "./Contact";
+import ExpertiseSection from "./ExpertiseSection";
 import Hero from "./Hero";
-import TrustBanner from "./TrustBanner";
-import QuickAccessGrid from "./QuickAccessGrid";
 import PartnersSection from "./PartnersSection";
 import SEO from "../../components/SEO";
 import StructuredData from "../../components/StructuredData";
@@ -23,12 +22,11 @@ const HomePage = () => {
       <StructuredData type="website" />
       
       <Hero />
-      <TrustBanner />
-      <QuickAccessGrid />
-      <PartnersSection />
+      <ExpertiseSection />
       <About />
       <FAQ />
       <Contact />
+      <PartnersSection />
     </div>
   );
 };
