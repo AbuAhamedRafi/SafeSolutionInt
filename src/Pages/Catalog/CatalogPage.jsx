@@ -129,7 +129,7 @@ const CatalogPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-28 pb-16">
+    <div className="min-h-screen bg-gray-50 pt-40 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-10 text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">{categoryData.title}</h1>

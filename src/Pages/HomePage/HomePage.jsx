@@ -22,11 +22,11 @@ const HomePage = () => {
       <StructuredData type="website" />
       
       <Hero />
+      <PartnersSection />
       <ExpertiseSection />
       <About />
       <FAQ />
       <Contact />
-      <PartnersSection />
     </div>
   );
 };
