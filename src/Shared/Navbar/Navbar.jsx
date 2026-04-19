@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaHome, FaChevronDown } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { RiAlignRight, RiCloseFill } from "react-icons/ri";
@@ -8,11 +8,27 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(false);
+  const catalogRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close catalog dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (catalogRef.current && !catalogRef.current.contains(e.target)) {
+        setCatalogOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, []);
 
   const handleLinkClick = () => {
@@ -130,38 +146,43 @@ export default function Navbar() {
             HOME
           </Link>
 
-          {/* Mega-Menu Trigger */}
-          <div className="group">
-            <button className="flex items-center space-x-1 text-white text-sm font-semibold hover:text-gray-200 transition duration-300 py-2">
+          {/* Mega-Menu Trigger — click-based for touch/iPad support */}
+          <div className="relative" ref={catalogRef}>
+            <button
+              onClick={() => setCatalogOpen(!catalogOpen)}
+              className="flex items-center space-x-1 text-white text-sm font-semibold hover:text-gray-200 transition duration-300 py-2"
+            >
               <span>CATALOG</span>
-              <FaChevronDown className="text-xs" />
+              <FaChevronDown className={`text-xs transition-transform duration-200 ${catalogOpen ? 'rotate-180' : ''}`} />
             </button>
             
             {/* Mega-Menu Dropdown Grid */}
-            <div className="absolute left-0 top-full w-full bg-white text-gray-800 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border-t border-red-500">
-              <div className="max-w-7xl mx-auto px-6 py-8">
-                 <div className="grid grid-cols-4 gap-8">
-                   {catalogCategories.map((cat, idx) => (
-                      <div key={idx}>
-                        <h3 className="text-red-500 font-bold mb-3 border-b border-gray-100 pb-2 uppercase text-sm">{cat.title}</h3>
-                        <ul className="space-y-2">
-                          {cat.sub.map((subItem, sIdx) => (
-                             <li key={sIdx}>
-                               <Link 
-                                 to={`/catalog/${subItem.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-                                 className="text-gray-600 hover:text-red-500 text-sm font-medium transition-colors"
-                                 onClick={handleLinkClick}
-                               >
-                                 {subItem}
-                               </Link>
-                             </li>
-                          ))}
-                        </ul>
-                      </div>
-                   ))}
-                 </div>
+            {catalogOpen && (
+              <div className="absolute left-1/2 -translate-x-1/2 top-full w-screen max-w-4xl bg-white text-gray-800 shadow-2xl z-50 border-t border-red-500 rounded-b-xl">
+                <div className="px-6 py-8">
+                   <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                     {catalogCategories.map((cat, idx) => (
+                        <div key={idx}>
+                          <h3 className="text-red-500 font-bold mb-3 border-b border-gray-100 pb-2 uppercase text-sm">{cat.title}</h3>
+                          <ul className="space-y-2">
+                            {cat.sub.map((subItem, sIdx) => (
+                               <li key={sIdx}>
+                                 <Link 
+                                   to={`/catalog/${subItem.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                                   className="text-gray-600 hover:text-red-500 text-sm font-medium transition-colors block py-0.5"
+                                   onClick={handleLinkClick}
+                                 >
+                                   {subItem}
+                                 </Link>
+                               </li>
+                            ))}
+                          </ul>
+                        </div>
+                     ))}
+                   </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           <Link
