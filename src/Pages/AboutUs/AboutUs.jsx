@@ -14,7 +14,7 @@ const AboutUs = () => {
       />
       
       {/* Hero Section */}
-      <div className="relative pt-40 pb-20 overflow-hidden">
+      <div className="relative pt-8 pb-20 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute top-10 right-10 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-40 blur-3xl"></div>

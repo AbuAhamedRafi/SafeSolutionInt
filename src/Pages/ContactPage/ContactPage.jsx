@@ -194,7 +194,7 @@ const ContactPage = () => {
       />
       
       {/* Hero Section with Featured Form */}
-      <div className="relative pt-36 md:pt-40 pb-12 md:pb-20 overflow-hidden">
+      <div className="relative pt-8 pb-12 md:pb-20 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-red-100 to-orange-100 rounded-full blur-3xl opacity-50"></div>

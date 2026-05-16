@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import SEO from "../../components/SEO";
@@ -196,6 +197,21 @@ const ServiceSection = ({ service, index }) => {
   );
 };
 
+ServiceSection.propTypes = {
+  index: PropTypes.number.isRequired,
+  service: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    points: PropTypes.arrayOf(PropTypes.string).isRequired,
+    image: PropTypes.string.isRequired,
+    imageAlt: PropTypes.string.isRequired,
+    accent: PropTypes.string.isRequired,
+    tagColor: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 // ─── Main Page ────────────────────────────────────────────────────────────────
 const ServicesPage = () => {
   const { hash } = useLocation();
@@ -221,7 +237,7 @@ const ServicesPage = () => {
       />
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 pt-36 pb-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 pt-16 pb-24 overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />

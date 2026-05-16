@@ -10,7 +10,7 @@ const Main = () => {
       <PerformanceOptimizer />
       <ScrollToTop />
       <Navbar />
-      <div className="min-h-screen">
+      <div className="min-h-screen pt-14 md:pt-32">
         <Outlet />
       </div>
       <Footer />

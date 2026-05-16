@@ -61,7 +61,7 @@ const ITServices = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 pt-20 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
       {/* Global Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-40 right-20 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-30 blur-3xl"></div>

@@ -122,14 +122,14 @@ const CatalogPage = () => {
 
   if (!categoryData) {
     return (
-      <div className="min-h-screen flex items-center justify-center pt-20">
+      <div className="min-h-screen flex items-center justify-center">
         <h1 className="text-3xl font-bold text-gray-800">Category Not Found</h1>
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 pt-40 pb-16 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 pt-8 pb-16 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         <div className="absolute top-20 right-10 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-red-100 to-orange-100 rounded-full opacity-30 blur-3xl"></div>
