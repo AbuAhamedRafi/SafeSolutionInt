@@ -24,9 +24,11 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Better tap targets for mobile */
+/* Better tap targets for mobile — exclude navbar to avoid layout distortion */
 @media (max-width: 768px) {
-  button, a {
+  main button, main a,
+  section button, section a,
+  footer button, footer a {
     min-height: 44px;
     min-width: 44px;
   }
