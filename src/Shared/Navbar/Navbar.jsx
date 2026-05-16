@@ -8,7 +8,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const catalogRef = useRef(null);
+  const servicesRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -16,11 +18,14 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close catalog dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (catalogRef.current && !catalogRef.current.contains(e.target)) {
         setCatalogOpen(false);
+      }
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) {
+        setServicesOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -34,7 +39,17 @@ export default function Navbar() {
   const handleLinkClick = () => {
     setMenuOpen(false);
     setCatalogOpen(false);
+    setServicesOpen(false);
   };
+
+  const serviceLinks = [
+    { label: "Facilities Management", id: "facilities-services" },
+    { label: "Technical Operations & Maintenance", id: "technical-operations" },
+    { label: "Soft Services", id: "soft-services" },
+    { label: "FM Consultancy & Advisory", id: "fm-consultancy" },
+    { label: "Project Management & Support", id: "project-management" },
+    { label: "Bio Clean Services", id: "bio-clean" },
+  ];
 
   const catalogCategories = [
     {
@@ -185,6 +200,34 @@ export default function Navbar() {
             )}
           </div>
 
+          {/* Services Dropdown */}
+          <div className="relative" ref={servicesRef}>
+            <button
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="flex items-center space-x-1 text-white text-sm font-semibold hover:text-gray-200 transition duration-300 py-2"
+            >
+              <span>SERVICES</span>
+              <FaChevronDown className={`text-xs transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {servicesOpen && (
+              <div className="absolute left-1/2 -translate-x-1/2 top-full w-72 bg-white text-gray-800 shadow-2xl z-50 border-t border-red-500 rounded-b-xl">
+                <div className="py-3">
+                  {serviceLinks.map((link, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/services#${link.id}`}
+                      className="block px-5 py-2.5 text-sm text-gray-700 hover:text-red-500 hover:bg-red-50 font-medium transition-colors"
+                      onClick={handleLinkClick}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
           <Link
             to="/it-services"
             onClick={handleLinkClick}
@@ -244,6 +287,32 @@ export default function Navbar() {
                         ))}
                       </ul>
                     </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Services Accordion */}
+            <div className="px-4 py-3 border-t border-gray-50">
+              <button
+                onClick={() => setServicesOpen(!servicesOpen)}
+                className="w-full flex justify-between items-center text-gray-800 font-semibold text-sm hover:text-red-500 transition-colors"
+              >
+                <span>SERVICES</span>
+                <FaChevronDown className={`transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {servicesOpen && (
+                <div className="mt-3 space-y-1 pl-2 border-l-2 border-red-100">
+                  {serviceLinks.map((link, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/services#${link.id}`}
+                      className="block text-gray-600 hover:text-red-500 text-sm py-1.5 transition-colors"
+                      onClick={handleLinkClick}
+                    >
+                      {link.label}
+                    </Link>
                   ))}
                 </div>
               )}
