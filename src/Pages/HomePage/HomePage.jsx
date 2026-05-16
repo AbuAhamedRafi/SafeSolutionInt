@@ -22,10 +22,10 @@ const HomePage = () => {
       <StructuredData type="website" />
       
       <Hero />
-      <PartnersSection />
       <ExpertiseSection />
       <About />
       <FAQ />
+      <PartnersSection />
       <Contact />
     </div>
   );
